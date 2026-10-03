@@ -35,6 +35,7 @@ const SIDENAV = [
 
 export default function Dashboard({
   isOnline, setIsOnline, wallet,
+  todayEarnings, todayJobs,
   availableJobs, missedJobs, activeJob,
   jobPopup, setJobPopup,
   showChat, setShowChat,
@@ -109,8 +110,8 @@ export default function Dashboard({
             <div className="grid grid-cols-3 gap-3">
               {[
                 { label: 'Wallet',   value: `₹${wallet.toLocaleString('en-IN')}`, sub: 'Balance',     color: 'text-blue-700', onClick: () => setDashTab('wallet')    },
-                { label: 'Today',    value: '4 jobs',                               sub: 'Completed',   color: 'text-green-600',onClick: () => setDashTab('analytics') },
-                { label: 'Earnings', value: '₹1,850',                               sub: 'Today',       color: 'text-indigo-600',onClick: () => setDashTab('analytics')},
+                { label: 'Today',    value: `${todayJobs || 0} jobs`,                               sub: 'Completed',   color: 'text-green-600',onClick: () => setDashTab('analytics') },
+                { label: 'Earnings', value: `₹${(todayEarnings || 0).toLocaleString('en-IN')}`,                               sub: 'Today',       color: 'text-indigo-600',onClick: () => setDashTab('analytics')},
               ].map(s => (
                 <button key={s.label} onClick={s.onClick} className="card p-3 text-center hover:shadow-md transition-shadow">
                   <p className={`font-black text-base ${s.color}`}>{s.value}</p>

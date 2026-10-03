@@ -193,7 +193,7 @@ export default function MyTrainingPage({
                 {/* Bottom Action Row */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
                   <span className="text-xs text-emerald-700 font-bold">
-                    Fee: {session.price || 'Free (Grant Sponsored)'}
+                    Free
                   </span>
 
                   <div className="flex items-center gap-2">

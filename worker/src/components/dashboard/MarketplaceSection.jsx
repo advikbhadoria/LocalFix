@@ -4,6 +4,16 @@ import { Package, Plus, Image as ImageIcon, Video, Tag } from 'lucide-react';
 export default function MarketplaceSection({ products, onAddProduct }) {
   const [showAdd, setShowAdd] = useState(false);
   const [newProduct, setNewProduct] = useState({ title: '', desc: '', price: '' });
+  const [mediaFile, setMediaFile] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState(null);
+
+  const handleMediaChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setMediaFile(file);
+      setMediaPreview(URL.createObjectURL(file));
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,10 +21,13 @@ export default function MarketplaceSection({ products, onAddProduct }) {
     onAddProduct({
       id: Date.now().toString(),
       ...newProduct,
-      image: 'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?w=500&q=80', // mockup image
+      image: mediaPreview || 'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?w=500&q=80', // use preview or fallback
+      mediaType: mediaFile?.type?.startsWith('video/') ? 'video' : 'image',
       seller: 'You'
     });
     setNewProduct({ title: '', desc: '', price: '' });
+    setMediaFile(null);
+    setMediaPreview(null);
     setShowAdd(false);
   };
 
@@ -65,14 +78,35 @@ export default function MarketplaceSection({ products, onAddProduct }) {
               />
             </div>
           </div>
+          
+          {mediaPreview && (
+            <div className="mb-4 relative rounded-xl overflow-hidden h-32 bg-slate-100 border border-slate-200">
+              {mediaFile?.type?.startsWith('video/') ? (
+                <video src={mediaPreview} className="w-full h-full object-cover" controls />
+              ) : (
+                <img src={mediaPreview} className="w-full h-full object-cover" alt="Preview" />
+              )}
+              <button 
+                type="button" 
+                onClick={() => { setMediaPreview(null); setMediaFile(null); }}
+                className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full text-xs font-bold w-6 h-6 flex items-center justify-center hover:bg-black/70"
+              >
+                &times;
+              </button>
+            </div>
+          )}
+
           <div className="flex gap-2 mb-4">
-            <button type="button" className="flex items-center gap-1 text-sm bg-slate-100 text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-200">
+            <label className="flex items-center gap-1 text-sm bg-slate-100 text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-200 cursor-pointer transition-colors">
               <ImageIcon size={16} /> Photo
-            </button>
-            <button type="button" className="flex items-center gap-1 text-sm bg-slate-100 text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-200">
+              <input type="file" accept="image/*" onChange={handleMediaChange} className="hidden" />
+            </label>
+            <label className="flex items-center gap-1 text-sm bg-slate-100 text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-200 cursor-pointer transition-colors">
               <Video size={16} /> Video
-            </button>
+              <input type="file" accept="video/*" onChange={handleMediaChange} className="hidden" />
+            </label>
           </div>
+          
           <div className="flex justify-end gap-2">
             <button type="button" onClick={() => setShowAdd(false)} className="px-4 py-2 font-bold text-slate-500 hover:text-slate-800">Cancel</button>
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">Publish</button>
@@ -92,7 +126,11 @@ export default function MarketplaceSection({ products, onAddProduct }) {
             <div key={p.id} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col">
               <div className="h-32 bg-slate-100 relative">
                 {p.image ? (
-                  <img src={p.image} className="w-full h-full object-cover" alt={p.title} />
+                  p.mediaType === 'video' ? (
+                    <video src={p.image} className="w-full h-full object-cover" controls />
+                  ) : (
+                    <img src={p.image} className="w-full h-full object-cover" alt={p.title} />
+                  )
                 ) : (
                   <div className="flex items-center justify-center h-full"><Package className="text-slate-300" /></div>
                 )}

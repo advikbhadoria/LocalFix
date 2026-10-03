@@ -351,7 +351,7 @@ export default function BookingModal({
                     <h3 className="text-sm font-bold text-slate-900 mt-0.5">{selectedCourse?.title}</h3>
                   </div>
                   <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                    {mentor.sessionPrice}
+                    Free
                   </span>
                 </div>
 
@@ -389,7 +389,7 @@ export default function BookingModal({
                 <div className="flex items-start gap-2 text-xs text-slate-600">
                   <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <p className="text-[11px] text-slate-600">
-                    <strong>Rescheduling Policy:</strong> Free rescheduling or cancellation up to 2 hours before session start time.
+                    <strong>Important:</strong> This course is provided free of cost.
                   </p>
                 </div>
 
@@ -400,7 +400,7 @@ export default function BookingModal({
                     onChange={(e) => setAgreePolicies(e.target.checked)}
                     className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500"
                   />
-                  <span>I agree to attend punctually and follow practical workshop safety guidelines.</span>
+                  <span className="font-bold text-blue-800">I agree to complete 10 jobs related to this skill within one month of completion of the course from our site.</span>
                 </label>
               </div>
             </div>

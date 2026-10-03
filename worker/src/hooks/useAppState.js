@@ -38,6 +38,9 @@ export function useAppState() {
   const [notifications,  setNotifications]  = useState(INITIAL_NOTIFICATIONS);
   const [chat,           setChat]           = useState(INITIAL_CHAT);
 
+  const [todayEarnings, setTodayEarnings] = useState(EARNINGS_TODAY.total);
+  const [todayJobs, setTodayJobs] = useState(EARNINGS_TODAY.jobs);
+
   // ── Toast ───────────────────────────────────────────────────────────────────
   const [toast, setToast] = useState(null);
 
@@ -94,6 +97,8 @@ export function useAppState() {
     if (!activeJob) return;
     const earned = activeJob.pay;
     setWallet(prev => prev + earned);
+    setTodayEarnings(prev => prev + earned);
+    setTodayJobs(prev => prev + 1);
     setShowCompletion(activeJob);
     addTransaction({ label: activeJob.type, amount: +earned, type: 'earn' });
     addNotification({ category: 'earnings', icon: '💰', title: 'Payment Received', body: `₹${earned} added to wallet` });
@@ -104,6 +109,7 @@ export function useAppState() {
 
   const sendTip = useCallback((amount) => {
     setWallet(prev => prev + amount);
+    setTodayEarnings(prev => prev + amount);
     addTransaction({ label: 'Customer Tip', amount: +amount, type: 'tip' });
     addNotification({ category: 'earnings', icon: '🎁', title: 'Tip Received', body: `You received a ₹${amount} tip` });
     setShowTip(false);
@@ -131,7 +137,7 @@ export function useAppState() {
     page, setPage,
     dashTab, setDashTab,
     isOnline, setIsOnline,
-    wallet,
+    wallet, todayEarnings, todayJobs,
     availableJobs, setAvailableJobs,
     missedJobs,
     activeJob,

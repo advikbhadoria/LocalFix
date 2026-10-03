@@ -12,6 +12,8 @@ export default function App() {
         isOnline={state.isOnline}
         setIsOnline={state.setIsOnline}
         wallet={state.wallet}
+        todayEarnings={state.todayEarnings}
+        todayJobs={state.todayJobs}
         availableJobs={state.availableJobs}
         missedJobs={state.missedJobs}
         activeJob={state.activeJob}
