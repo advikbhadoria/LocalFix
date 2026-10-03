@@ -50,14 +50,37 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="animated-bg text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-900 relative">
+<body class="text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-900 relative" style="background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientBG 15s ease infinite;">
+  <style>
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes flyBubble {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 50%; }
+      100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 20%; }
+    }
+    .bubble-anim {
+      position: absolute; bottom: -100px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: flyBubble 10s infinite ease-in;
+    }
+  </style>
 
-  <!-- Ambient Animated Background -->
-  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-    <!-- Mesh Gradients -->
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-600/15 via-indigo-500/10 to-violet-600/15 filter blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
-    <!-- Rotating subtle glow -->
-    <div class="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] rounded-full bg-gradient-to-b from-transparent to-brand-400/10 mix-blend-multiply filter blur-[100px] animate-spin" style="animation-duration: 40s;"></div>
+  <!-- Animated Floating Particles Background -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="bubble-anim" style="left: 10%; width: 80px; height: 80px; animation-duration: 8s;"></div>
+    <div class="bubble-anim" style="left: 20%; width: 30px; height: 30px; animation-duration: 5s; animation-delay: 1s;"></div>
+    <div class="bubble-anim" style="left: 35%; width: 50px; height: 50px; animation-duration: 7s; animation-delay: 2s;"></div>
+    <div class="bubble-anim" style="left: 50%; width: 60px; height: 60px; animation-duration: 11s; animation-delay: 0s;"></div>
+    <div class="bubble-anim" style="left: 65%; width: 20px; height: 20px; animation-duration: 6s; animation-delay: 3s;"></div>
+    <div class="bubble-anim" style="left: 75%; width: 90px; height: 90px; animation-duration: 9s; animation-delay: 1s;"></div>
+    <div class="bubble-anim" style="left: 85%; width: 40px; height: 40px; animation-duration: 8s; animation-delay: 4s;"></div>
+    
+    <!-- Soft light overlay -->
+    <div class="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
+  </div>
     <!-- Tactical Dot grid -->
     <div class="absolute inset-0" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 24px 24px; opacity: 0.15;"></div>
   </div>

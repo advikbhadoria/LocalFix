@@ -276,11 +276,40 @@ export default function Dashboard({
   };
 
   return (
-    <div className="min-h-screen animated-bg relative overflow-hidden transition-all duration-300 ease-out">
-      {/* Animated Ambient Mesh Background */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-indigo-500/10 to-violet-600/15 animate-pulse filter blur-3xl opacity-60"></div>
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+    <div className="min-h-screen relative overflow-hidden transition-all duration-300 ease-out text-slate-800" style={{
+      background: 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+      backgroundSize: '400% 400%',
+      animation: 'gradientBG 15s ease infinite'
+    }}>
+      <style>{`
+        @keyframes gradientBG {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes flyBubble {
+          0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 50%; }
+          100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 20%; }
+        }
+        .bubble-anim {
+          position: absolute; bottom: -100px;
+          background: rgba(255, 255, 255, 0.2);
+          animation: flyBubble 10s infinite ease-in;
+        }
+      `}</style>
+
+      {/* Animated Floating Particles Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="bubble-anim" style={{ left: '10%', width: '80px', height: '80px', animationDuration: '8s' }}></div>
+        <div className="bubble-anim" style={{ left: '20%', width: '30px', height: '30px', animationDuration: '5s', animationDelay: '1s' }}></div>
+        <div className="bubble-anim" style={{ left: '35%', width: '50px', height: '50px', animationDuration: '7s', animationDelay: '2s' }}></div>
+        <div className="bubble-anim" style={{ left: '50%', width: '60px', height: '60px', animationDuration: '11s', animationDelay: '0s' }}></div>
+        <div className="bubble-anim" style={{ left: '65%', width: '20px', height: '20px', animationDuration: '6s', animationDelay: '3s' }}></div>
+        <div className="bubble-anim" style={{ left: '75%', width: '90px', height: '90px', animationDuration: '9s', animationDelay: '1s' }}></div>
+        <div className="bubble-anim" style={{ left: '85%', width: '40px', height: '40px', animationDuration: '8s', animationDelay: '4s' }}></div>
+        
+        {/* Soft light overlay */}
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
       </div>
       
       <div className="relative z-10">
