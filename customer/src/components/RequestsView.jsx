@@ -95,10 +95,10 @@ export default function RequestsView({ requests, cancelRequest, updateRequestRev
                       </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white px-4 py-3 rounded-xl text-center flex flex-col items-center shadow-md border border-blue-500/30 min-w-[110px] relative overflow-hidden">
-                      <div className="absolute top-0 right-0 p-1 opacity-10"><Lock className="w-8 h-8" /></div>
-                      <span className="text-[9px] uppercase font-bold text-blue-300 tracking-[0.2em] mb-1 flex items-center gap-1 z-10"><ShieldCheck className="w-3 h-3" /> PIN</span>
-                      <span className="text-xl font-mono font-black tracking-widest z-10">{req.pin}</span>
+                    <div className="bg-slate-900 text-emerald-400 px-5 py-3 rounded-xl border-2 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.3)] min-w-[120px] relative overflow-hidden flex flex-col items-center justify-center animate-[pulse_3s_ease-in-out_infinite]">
+                      <div className="absolute top-0 right-0 p-1 opacity-10 text-emerald-400"><Lock className="w-8 h-8" /></div>
+                      <span className="text-[9px] uppercase font-bold text-emerald-500/70 tracking-[0.2em] mb-1 flex items-center gap-1 z-10"><ShieldCheck className="w-3 h-3" /> SECURE PIN</span>
+                      <span className="text-2xl font-mono font-black tracking-[0.25em] z-10 drop-shadow-[0_0_5px_rgba(52,211,153,0.8)]">{req.pin}</span>
                     </div>
                   </div>
 

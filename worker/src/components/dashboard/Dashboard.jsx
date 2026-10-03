@@ -276,17 +276,25 @@ export default function Dashboard({
   };
 
   return (
-    <div className="min-h-screen bg-[#f0f7ff]">
-      <DashboardHeader
-        isOnline={isOnline}
-        setIsOnline={setIsOnline}
-        wallet={wallet}
-        unreadCount={unreadCount}
-        setDashTab={setDashTab}
-        onLanding={onLanding}
-      />
+    <div className="min-h-screen bg-[#f0f7ff] relative overflow-hidden transition-all duration-300 ease-out">
+      {/* Animated Ambient Mesh Background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-indigo-500/10 to-violet-600/15 animate-pulse filter blur-3xl opacity-60"></div>
+        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+      </div>
+      
+      <div className="relative z-10">
+        <DashboardHeader
+          isOnline={isOnline}
+          setIsOnline={setIsOnline}
+          wallet={wallet}
+          unreadCount={unreadCount}
+          setDashTab={setDashTab}
+          onLanding={onLanding}
+        />
+      </div>
 
-      <div className="max-w-5xl mx-auto flex">
+      <div className="max-w-5xl mx-auto flex relative z-10">
         {/* Desktop sidebar */}
         <aside className={`hidden md:flex flex-col shrink-0 py-4 px-3 sticky top-14 self-start h-[calc(100vh-3.5rem)] ${dashTab === 'skillconnect' ? 'w-16 items-center' : 'w-56'}`}>
           <nav className="space-y-1 w-full">

@@ -7,3 +7,11 @@
     background-size: 24px 24px;
   }
 }
+
+@keyframes scroll {
+  0%, 15% { transform: translateY(0); }
+  25%, 40% { transform: translateY(-24px); }
+  50%, 65% { transform: translateY(-48px); }
+  75%, 90% { transform: translateY(-72px); }
+  100% { transform: translateY(0); }
+}
