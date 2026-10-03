@@ -68,7 +68,14 @@ export default function RequestsView({ requests, cancelRequest, updateRequestRev
                       <div className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full mb-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span> {req.eta}
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 leading-tight">{req.type} - {req.subType}</h3>
+                      <h3 className="text-lg font-bold text-slate-900 leading-tight">
+                        {req.type} - {req.subType}
+                        {req.workerCount > 1 && (
+                          <span className="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full ml-2 align-middle">
+                            {req.workerCount} Workers
+                          </span>
+                        )}
+                      </h3>
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold text-slate-900">₹{req.price}</div>
@@ -103,7 +110,7 @@ export default function RequestsView({ requests, cancelRequest, updateRequestRev
                       <CheckCircle2 className="w-5 h-5" /> Mark Job as Completed
                     </button>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <button className="flex-1 bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm cursor-pointer">
+                      <button onClick={() => alert('Chat interface opening...')} className="flex-1 bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm cursor-pointer">
                         <MessageCircle className="w-4 h-4" /> Chat
                       </button>
                       <a href={`tel:${req.worker.phone}`} className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">

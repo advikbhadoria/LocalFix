@@ -220,12 +220,32 @@ export default function Dashboard({
         return (
           <div className="space-y-4 pb-4">
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-              <h2 className="text-xl font-bold text-slate-900 mb-2">Worker Community</h2>
-              <p className="text-slate-600 mb-4">Discuss with other workers and team up for large jobs that require more than one person.</p>
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                <div className="font-bold text-blue-900">Commercial AC Installation at Tech Park</div>
-                <div className="text-sm text-blue-700 mt-1">Requires 3 technicians. 2 spots left.</div>
-                <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer">Join Team</button>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-slate-900">Worker Community Groups</h2>
+                <button onClick={() => alert('Create Group form opening...')} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer">+ Form a Community Group</button>
+              </div>
+              <p className="text-slate-600 mb-6">Discuss with other workers and team up for large jobs that require more than one person.</p>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex justify-between items-center">
+                  <div>
+                    <div className="font-bold text-blue-900 text-lg">Commercial AC Installation at Tech Park</div>
+                    <div className="text-sm text-blue-700 mt-1 flex items-center gap-2">
+                      <Users size={16} /> 3 workers required. 2 spots left.
+                    </div>
+                  </div>
+                  <button onClick={() => alert('Chat interface opened...')} className="bg-white hover:bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer border border-blue-200">Chat & Join</button>
+                </div>
+
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex justify-between items-center">
+                  <div>
+                    <div className="font-bold text-slate-900 text-lg">Shifters and Movers (3 BHK Relocation)</div>
+                    <div className="text-sm text-slate-600 mt-1 flex items-center gap-2">
+                      <Users size={16} /> 4 workers required. 1 spot left.
+                    </div>
+                  </div>
+                  <button onClick={() => alert('Chat interface opened...')} className="bg-white hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer border border-slate-300">Chat & Join</button>
+                </div>
               </div>
             </div>
           </div>
@@ -256,22 +276,25 @@ export default function Dashboard({
 
       <div className="max-w-5xl mx-auto flex">
         {/* Desktop sidebar */}
-        <aside className="hidden md:flex flex-col w-56 shrink-0 py-4 px-3 sticky top-14 self-start h-[calc(100vh-3.5rem)]">
-          <nav className="space-y-1">
+        <aside className={`hidden md:flex flex-col shrink-0 py-4 px-3 sticky top-14 self-start h-[calc(100vh-3.5rem)] ${dashTab === 'skillconnect' ? 'w-16 items-center' : 'w-56'}`}>
+          <nav className="space-y-1 w-full">
             {SIDENAV.map(({ id, icon: Icon, label }) => {
               const active = dashTab === id;
               return (
                 <button
                   key={id}
+                  title={label}
                   onClick={() => setDashTab(id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                  className={`flex items-center justify-center md:justify-start gap-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    dashTab === 'skillconnect' ? 'px-0 w-10 h-10 mx-auto' : 'w-full px-3'
+                  } ${
                     active
                       ? 'bg-blue-700 text-white shadow-md'
                       : 'text-slate-600 hover:bg-blue-50 hover:text-blue-700'
                   }`}
                 >
                   <Icon size={17} strokeWidth={active ? 2.5 : 1.8} />
-                  {label}
+                  {dashTab !== 'skillconnect' && <span>{label}</span>}
                   {id === 'notifications' && unreadCount > 0 && (
                     <span className="ml-auto w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                       {unreadCount}
@@ -284,12 +307,22 @@ export default function Dashboard({
 
           {/* Demo button */}
           <div className="mt-auto">
-            <button
-              onClick={() => setShowDemo(true)}
-              className="w-full flex items-center justify-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-semibold text-sm px-3 py-2.5 rounded-xl hover:bg-blue-100 transition-colors"
-            >
-              <Play size={14} /> Demo Mode
-            </button>
+            {dashTab !== 'skillconnect' ? (
+              <button
+                onClick={() => setShowDemo(true)}
+                className="w-full flex items-center justify-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-semibold text-sm px-3 py-2.5 rounded-xl hover:bg-blue-100 transition-colors"
+              >
+                <Play size={14} /> Demo Mode
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowDemo(true)}
+                title="Demo Mode"
+                className="w-10 h-10 flex items-center justify-center bg-blue-50 border border-blue-200 text-blue-700 rounded-xl hover:bg-blue-100 transition-colors mx-auto"
+              >
+                <Play size={14} />
+              </button>
+            )}
           </div>
         </aside>
 

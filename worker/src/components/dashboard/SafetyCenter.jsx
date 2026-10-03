@@ -21,6 +21,7 @@ export default function SafetyCenter({ onClose }) {
         frameRef.current = requestAnimationFrame(tick);
       } else {
         setSosActive(true);
+        alert('Alert Sent');
         setHolding(false);
         setProgress(0);
       }

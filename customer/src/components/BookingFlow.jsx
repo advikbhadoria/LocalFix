@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera } from 'lucide-react';
+import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'plumber', label: 'Plumber', icon: Wrench, price: 149, color: 'text-blue-500', bg: 'bg-blue-50' },
@@ -7,7 +7,10 @@ const CATEGORIES = [
   { id: 'carpenter', label: 'Carpenter', icon: Hammer, price: 199, color: 'text-orange-500', bg: 'bg-orange-50' },
   { id: 'cook', label: 'Cook / Tiffin', icon: Utensils, price: 249, color: 'text-green-500', bg: 'bg-green-50' },
   { id: 'maid', label: 'House Help / Maid', icon: Sparkles, price: 199, color: 'text-teal-500', bg: 'bg-teal-50' },
-  { id: 'appliance', label: 'Appliance Repair', icon: Wrench, price: 299, color: 'text-indigo-500', bg: 'bg-indigo-50' }
+  { id: 'appliance', label: 'Appliance Repair', icon: Wrench, price: 299, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { id: 'labour', label: 'Labour / Help', icon: Users, price: 399, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { id: 'painter', label: 'Painter', icon: Paintbrush, price: 299, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { id: 'salon', label: 'Salon at Home', icon: Scissors, price: 349, color: 'text-pink-500', bg: 'bg-pink-50' }
 ];
 
 const SUB_TYPES = {
@@ -16,28 +19,63 @@ const SUB_TYPES = {
     { id: 'p2', label: 'Blocked Drain & Pipe Leakage', price: 249, time: '~45m' },
     { id: 'p3', label: 'Flush Tank / Cistern Fitting', price: 299, time: '~45m' },
     { id: 'p4', label: 'Full Pipeline Overhaul', price: 599, time: '~90m' },
+    { id: 'p5', label: 'Water Heater Installation', price: 349, time: '~1h' }
   ],
   electrician: [
     { id: 'e1', label: 'Switch & Socket Repair', price: 129, time: '~30m' },
     { id: 'e2', label: 'Ceiling Fan / Appliance Fitting', price: 199, time: '~40m' },
     { id: 'e3', label: 'MCB & Fuse Tripping Fix', price: 249, time: '~45m' },
     { id: 'e4', label: 'Complete Room Wiring', price: 699, time: '~2h' },
+    { id: 'e5', label: 'Inverter Installation', price: 399, time: '~1h' }
   ],
   carpenter: [
     { id: 'c1', label: 'Furniture Assembly', price: 199, time: '~1h' },
     { id: 'c2', label: 'Door & Lock Repair', price: 249, time: '~45m' },
+    { id: 'c3', label: 'Bed / Wardrobe Repair', price: 349, time: '~1.5h' },
+    { id: 'c4', label: 'Custom Shelving & Cabinets', price: 599, time: '~2h' },
+    { id: 'c5', label: 'Window Frame Fixing', price: 299, time: '~1h' }
   ],
   cook: [
     { id: 'ck1', label: 'One-Time Meal Prep', price: 249, time: '~1.5h' },
     { id: 'ck2', label: 'Full Day Cooking', price: 699, time: '~4h' },
+    { id: 'ck3', label: 'Party / Event Catering', price: 999, time: '~5h' },
+    { id: 'ck4', label: 'Weekly Tiffin Planning', price: 1499, time: '~Recurring' },
+    { id: 'ck5', label: 'Dietary / Healthy Cooking', price: 349, time: '~2h' }
   ],
   maid: [
-    { id: 'm1', label: 'Deep Cleaning', price: 499, time: '~3h' },
+    { id: 'm1', label: 'Deep Cleaning (Per Room)', price: 499, time: '~3h' },
     { id: 'm2', label: 'Regular Sweeping & Mopping', price: 199, time: '~1h' },
+    { id: 'm3', label: 'Bathroom Cleaning', price: 299, time: '~1h' },
+    { id: 'm4', label: 'Utensil Washing (One-time)', price: 149, time: '~45m' },
+    { id: 'm5', label: 'Full House Dusting', price: 399, time: '~2h' }
   ],
   appliance: [
     { id: 'a1', label: 'AC Service & Repair', price: 399, time: '~1h' },
     { id: 'a2', label: 'Washing Machine Repair', price: 299, time: '~45m' },
+    { id: 'a3', label: 'Refrigerator Repair', price: 349, time: '~1h' },
+    { id: 'a4', label: 'Microwave Fix', price: 249, time: '~45m' },
+    { id: 'a5', label: 'Geyser Service', price: 299, time: '~1h' }
+  ],
+  labour: [
+    { id: 'l1', label: 'Shifters and Movers', price: 499, time: '~3h' },
+    { id: 'l2', label: 'Farm Help', price: 399, time: '~4h' },
+    { id: 'l3', label: 'Nanny / Babysitter', price: 299, time: '~3h' },
+    { id: 'l4', label: 'Construction Labourer', price: 599, time: '~8h' },
+    { id: 'l5', label: 'Event Setup Helpers', price: 449, time: '~4h' }
+  ],
+  painter: [
+    { id: 'pt1', label: 'Single Wall Accent', price: 499, time: '~2h' },
+    { id: 'pt2', label: 'Full Room Painting', price: 1499, time: '~6h' },
+    { id: 'pt3', label: 'Door & Window Polish', price: 399, time: '~2h' },
+    { id: 'pt4', label: 'Exterior Patch Fix', price: 599, time: '~3h' },
+    { id: 'pt5', label: 'Texture Painting', price: 899, time: '~4h' }
+  ],
+  salon: [
+    { id: 's1', label: 'Men\'s Haircut & Grooming', price: 249, time: '~45m' },
+    { id: 's2', label: 'Women\'s Hair Spa', price: 499, time: '~1.5h' },
+    { id: 's3', label: 'Manicure & Pedicure', price: 399, time: '~1h' },
+    { id: 's4', label: 'Facial & Cleanup', price: 349, time: '~1h' },
+    { id: 's5', label: 'Bridal Makeup', price: 1999, time: '~3h' }
   ]
 };
 
@@ -56,6 +94,7 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
   const [selectedWorker, setSelectedWorker] = useState(null);
   const [generatedPin, setGeneratedPin] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
+  const [workerCount, setWorkerCount] = useState(1);
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -88,8 +127,8 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
   };
 
   const calculateTotal = () => {
-    let total = 49 + selectedSubType.price;
-    if (urgency === 'instant') total += 30;
+    let total = 49 + (selectedSubType.price * workerCount);
+    if (urgency === 'instant') total += (30 * workerCount);
     return total;
   };
 
@@ -103,6 +142,7 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
       type: selectedCategory.label,
       subType: selectedSubType.label,
       worker: { name: worker.name, phone: worker.phone },
+      workerCount: workerCount,
       pin: pin,
       eta: urgency === 'standard' ? formatTimeWindow() : worker.eta,
       price: calculateTotal(),
@@ -249,6 +289,15 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
             </button>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Service Details</h2>
             
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-slate-700 mb-2">Number of workers required</label>
+              <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-xl p-2 w-fit">
+                <button onClick={() => setWorkerCount(Math.max(1, workerCount - 1))} className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">-</button>
+                <span className="font-bold text-slate-800 text-lg w-4 text-center">{workerCount}</span>
+                <button onClick={() => setWorkerCount(workerCount + 1)} className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">+</button>
+              </div>
+            </div>
+
             <div className="mb-6">
               <label className="block text-sm font-bold text-slate-700 mb-2">Describe the issue (optional)</label>
               <textarea 

@@ -4,7 +4,7 @@
 
 import { router } from './router.js';
 import { appState } from './state.js';
-import { demoControls } from './components/demo-controls.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Lucide icons on start
@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // Render floating demo controls dock
-  demoControls.render();
+  // Render floating demo controls dock (Removed)
 
   // Initial Route Dispatch
   router.handleRoute();
@@ -22,6 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   appState.subscribe((state, changeType) => {
     // Re-render current page
     router.handleRoute();
-    demoControls.render();
+
   });
 });
