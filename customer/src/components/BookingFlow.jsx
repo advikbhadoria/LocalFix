@@ -100,6 +100,12 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
   const [generatedPin, setGeneratedPin] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
   const [workerCount, setWorkerCount] = useState(1);
+  const [activeChatWorker, setActiveChatWorker] = useState(null);
+  const [activeOfferWorker, setActiveOfferWorker] = useState(null);
+  const [offerPrice, setOfferPrice] = useState('');
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatLog, setChatLog] = useState([]);
+  const [showGlobalOffer, setShowGlobalOffer] = useState(false);
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -385,12 +391,33 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                 <span>₹{calculateTotal()}</span>
               </div>
               <div className="mt-4">
-                <button 
-                  onClick={() => alert('Feature to broadcast custom offer price to all nearby workers coming soon!')}
-                  className="w-full text-slate-600 bg-slate-100 hover:bg-slate-200 text-sm font-bold py-2 rounded-lg transition-colors border border-slate-200 flex items-center justify-center gap-2"
-                >
-                  <IndianRupee className="w-4 h-4" /> Offer Custom Price
-                </button>
+                {!showGlobalOffer ? (
+                  <button 
+                    onClick={() => setShowGlobalOffer(true)}
+                    className="w-full text-slate-600 bg-slate-100 hover:bg-slate-200 text-sm font-bold py-2 rounded-lg transition-colors border border-slate-200 flex items-center justify-center gap-2"
+                  >
+                    <IndianRupee className="w-4 h-4" /> Offer Custom Price
+                  </button>
+                ) : (
+                  <div className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 animate-fade-in">
+                    <div className="relative flex-1">
+                      <IndianRupee className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                      <input 
+                        type="number" 
+                        value={offerPrice} 
+                        onChange={e => setOfferPrice(e.target.value)} 
+                        className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all" 
+                        placeholder="Enter your price" 
+                      />
+                    </div>
+                    <button 
+                      onClick={() => { alert('Custom offer broadcasted to nearby workers!'); setShowGlobalOffer(false); setOfferPrice(''); }} 
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm whitespace-nowrap"
+                    >
+                      Broadcast Offer
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -444,7 +471,8 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
 
                 <div className="space-y-4">
                   {WORKERS.map(worker => (
-                    <div key={worker.id} className="group border border-slate-200 rounded-2xl p-5 bg-white flex flex-col md:flex-row gap-5 justify-between items-start md:items-center hover:shadow-lg hover:border-blue-300 transition-all duration-300">
+                    <div key={worker.id} className="group border border-slate-200 rounded-2xl p-5 bg-white hover:shadow-lg hover:border-blue-300 transition-all duration-300">
+                      <div className="flex flex-col md:flex-row gap-5 justify-between items-start md:items-center">
                       <div className="flex gap-4 items-start md:items-center w-full md:w-auto">
                         <div className="relative">
                           <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex-shrink-0 flex items-center justify-center text-blue-600 font-black text-2xl shadow-inner border border-blue-200/50">
@@ -473,13 +501,10 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                           Standard Rate: ₹{calculateTotal()} Base
                         </div>
                         <div className="flex flex-wrap gap-2 w-full md:w-auto justify-end">
-                          <button onClick={() => alert('Opening chat with ' + worker.name)} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
+                          <button onClick={() => { setActiveChatWorker(activeChatWorker === worker.id ? null : worker.id); setActiveOfferWorker(null); }} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
                             <MessageSquare className="w-4 h-4" /> Chat
                           </button>
-                          <button onClick={() => {
-                            const newPrice = prompt('Enter your offer price (₹) for this worker:', calculateTotal());
-                            if(newPrice && !isNaN(newPrice)) { alert('Offer of ₹' + newPrice + ' sent to ' + worker.name); }
-                          }} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-green-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
+                          <button onClick={() => { setActiveOfferWorker(activeOfferWorker === worker.id ? null : worker.id); setActiveChatWorker(null); }} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-green-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
                             <IndianRupee className="w-4 h-4" /> Offer Price
                           </button>
                           <button 
@@ -490,6 +515,59 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                           </button>
                         </div>
                       </div>
+                      
+                      {activeChatWorker === worker.id && (
+                        <div className="mt-5 pt-4 border-t border-slate-100 w-full animate-fade-in">
+                          <div className="bg-slate-50 p-4 rounded-xl mb-3 h-32 overflow-y-auto flex flex-col">
+                            {chatLog.length === 0 ? (
+                              <div className="text-xs text-slate-400 text-center my-auto">Start a conversation with {worker.name}</div>
+                            ) : (
+                              chatLog.map((msg, i) => (
+                                <div key={i} className="text-sm bg-blue-100 text-blue-900 p-2.5 rounded-xl rounded-br-sm self-end mb-2 max-w-[80%] shadow-sm">
+                                  {msg}
+                                </div>
+                              ))
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <input 
+                              type="text" 
+                              value={chatMessage} 
+                              onChange={e => setChatMessage(e.target.value)} 
+                              onKeyDown={e => { if (e.key === 'Enter' && chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }}
+                              className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" 
+                              placeholder="Type a message..." 
+                            />
+                            <button 
+                              onClick={() => { if(chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }} 
+                              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm"
+                            >
+                              Send
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      {activeOfferWorker === worker.id && (
+                        <div className="mt-5 pt-4 border-t border-slate-100 w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 animate-fade-in">
+                          <div className="relative flex-1">
+                            <IndianRupee className="w-4 h-4 text-slate-400 absolute left-4 top-3" />
+                            <input 
+                              type="number" 
+                              value={offerPrice} 
+                              onChange={e => setOfferPrice(e.target.value)} 
+                              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all" 
+                              placeholder="Enter your price" 
+                            />
+                          </div>
+                          <button 
+                            onClick={() => { alert('Offer sent to ' + worker.name + '!'); setActiveOfferWorker(null); setOfferPrice(''); }} 
+                            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm whitespace-nowrap"
+                          >
+                            Submit Offer
+                          </button>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
