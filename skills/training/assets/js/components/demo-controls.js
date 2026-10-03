@@ -82,8 +82,7 @@ export const demoControls = {
           category: "Electrical Services",
           date: "Oct 12, 2026",
           time: "11:30 AM",
-          format: "online",
-          fee: "$35.00"
+          format: "online"
         });
         toast.success("Quick Booking Added", "New session scheduled with Marcus Vance.");
       };

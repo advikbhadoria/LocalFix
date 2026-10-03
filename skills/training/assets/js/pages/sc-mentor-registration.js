@@ -27,7 +27,7 @@ export const scMentorRegistrationPage = {
         <div style="margin-bottom:2rem; text-align:center;">
           <span class="badge badge-blue" style="margin-bottom:0.5rem;">SkillConnect Mentorship Network</span>
           <h1 style="font-size:2rem; color:#173B75; margin-bottom:0.35rem;">Become a Verified Mentor</h1>
-          <p style="color:#64748B;">Share your field expertise, train junior workers, conduct skill assessments, and earn mentorship fees.</p>
+          <p style="color:#64748B;">Share your field expertise, train junior workers, and conduct skill assessments.</p>
         </div>
 
         <!-- Wizard Stepper -->
@@ -177,12 +177,7 @@ export const scMentorRegistrationPage = {
               <p style="font-size:0.875rem; color:#64748B; margin-bottom:1.5rem;">Configure your training formats, languages, and hourly mentoring rate.</p>
 
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
-                <div class="form-group">
-                  <label class="form-label">Mentoring Hourly Fee ($ USD)</label>
-                  <input type="number" class="form-control" id="reg-fee" value="${user.hourlyFee}" placeholder="0 for Community / Volunteer">
-                  <div class="form-hint">Set to 0 to offer free community mentoring.</div>
-                </div>
-                <div class="form-group">
+                <div class="form-group" style="grid-column: span 2;">
                   <label class="form-label">Preferred Teaching Formats</label>
                   <select class="form-select" id="reg-formats">
                     <option value="both" selected>Online & In-Person Practical</option>
@@ -212,7 +207,7 @@ export const scMentorRegistrationPage = {
                 <div class="summary-row"><span class="label">Trade Category:</span><span class="val">${user.primaryCategory}</span></div>
                 <div class="summary-row"><span class="label">Experience:</span><span class="val">${user.experienceYears} Years Field Experience</span></div>
                 <div class="summary-row"><span class="label">Skills to Teach:</span><span class="val">${user.selectedSkills.join(', ')}</span></div>
-                <div class="summary-row"><span class="label">Mentoring Rate:</span><span class="val">$${user.hourlyFee}/hr</span></div>
+
                 <div class="summary-row"><span class="label">Evidence Attached:</span><span class="val">2 Verified Credentials Attached</span></div>
               </div>
 
@@ -312,7 +307,7 @@ export const scMentorRegistrationPage = {
                 ${isApproved ? 'Verified Mentor Status Active' : 'Application Under Board Review'}
               </h3>
               <p style="font-size:0.8125rem; color:${isApproved ? '#15803D' : '#1E3A8A'}; margin:0;">
-                ${isApproved ? 'You are officially certified to mentor workers, conduct assessments, and earn fees.' : 'Our Technical Review Board is evaluating your submitted trade qualifications and credentials.'}
+                ${isApproved ? 'You are officially certified to mentor workers, conduct assessments, and train peers.' : 'Our Technical Review Board is evaluating your submitted trade qualifications and credentials.'}
               </p>
             </div>
           </div>

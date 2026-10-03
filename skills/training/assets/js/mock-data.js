@@ -454,7 +454,6 @@ export const INITIAL_MOCK_DATA = {
       duration: "60 mins",
       format: "online", // online, in-person, supervised-field
       status: "upcoming", // upcoming, completed, cancelled, pending
-      fee: "$35.00",
       meetingUrl: "https://meet.skillconnect.pro/room-elec-9042",
       location: "Virtual Classroom (HD Video + Screen Share)",
       requiredTools: ["Digital Multimeter", "Current Clamp", "Calculator"],
@@ -472,7 +471,6 @@ export const INITIAL_MOCK_DATA = {
       duration: "90 mins",
       format: "in-person",
       status: "upcoming",
-      fee: "$40.00",
       meetingUrl: "",
       location: "Austin Pro Training Workshop (Bay 4, 1800 Industrial Blvd)",
       requiredTools: ["Refrigerant Gauges", "Clamp Temperature Thermocouples", "Safety Glasses"],
@@ -490,7 +488,6 @@ export const INITIAL_MOCK_DATA = {
       duration: "60 mins",
       format: "in-person",
       status: "completed",
-      fee: "Free (Community Mentorship)",
       location: "Pro Training Bay 2",
       attendanceConfirmed: true,
       learnerFeedback: { rating: 5, comment: "Elena is brilliant. Her heat distribution tip eliminated my copper solder drips immediately." },
@@ -508,7 +505,6 @@ export const INITIAL_MOCK_DATA = {
       duration: "45 mins",
       format: "online",
       status: "completed",
-      fee: "$20.00",
       attendanceConfirmed: true,
       learnerFeedback: { rating: 5, comment: "Gave me practical scripts for managing delayed part deliveries with customers." },
       mentorFeedback: { status: "demonstrated", comment: "Alex showed natural empathy and structured verbal communication." }
@@ -706,7 +702,6 @@ export const INITIAL_MOCK_DATA = {
       bio: "Detail-oriented technician specializing in residential circuit safety, GFCI upgrades, and client communication.",
       teachingFormats: ["online", "in-person"],
       preferredLanguages: ["English", "Spanish"],
-      hourlyFee: "25",
       submittedDocs: ["State_Apprentice_Card.pdf", "OSHA10_Cert.pdf"],
       verificationProgress: {
         profileReview: "completed",

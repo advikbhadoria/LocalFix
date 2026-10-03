@@ -104,10 +104,6 @@ export const scMyTrainingPage = {
                 <i data-lucide="${s.format === 'online' ? 'video' : 'map-pin'}" style="width:14px;height:14px;color:#2563EB;"></i>
                 <span>Format: <strong style="text-transform:capitalize;">${s.format}</strong> • ${s.location}</span>
               </div>
-              <div class="detail-item">
-                <i data-lucide="tag" style="width:14px;height:14px;color:#2563EB;"></i>
-                <span>Fee: <strong>${s.fee}</strong></span>
-              </div>
             </div>
 
             ${isCompleted && s.mentorFeedback ? `

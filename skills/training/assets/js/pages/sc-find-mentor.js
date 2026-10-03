@@ -85,19 +85,12 @@ export const scFindMentorPage = {
               <option value="15" ${filters.minExperience === '15' ? 'selected' : ''}>15+ Years (Master)</option>
             </select>
 
-            <!-- Pricing Filter -->
-            <select class="filter-select" id="filter-pricing-select">
-              <option value="all" ${filters.pricing === 'all' ? 'selected' : ''}>Fee: Any</option>
-              <option value="all">All Mentors</option>
-              <option value="paid" ${filters.pricing === 'paid' ? 'selected' : ''}>Paid Sessions</option>
-            </select>
 
             <!-- Sort By -->
             <select class="filter-select" id="filter-sort-select">
               <option value="relevant" ${filters.sortBy === 'relevant' ? 'selected' : ''}>Sort: Most Relevant</option>
               <option value="rating" ${filters.sortBy === 'rating' ? 'selected' : ''}>Highest Rated</option>
               <option value="experience" ${filters.sortBy === 'experience' ? 'selected' : ''}>Most Experienced</option>
-              <option value="fee_low" ${filters.sortBy === 'fee_low' ? 'selected' : ''}>Lowest Fee</option>
               <option value="sessions" ${filters.sortBy === 'sessions' ? 'selected' : ''}>Most Sessions</option>
             </select>
 
@@ -190,7 +183,6 @@ export const scFindMentorPage = {
     const searchBtn = container.querySelector('#btn-run-search');
     const formatSelect = container.querySelector('#filter-format-select');
     const expSelect = container.querySelector('#filter-exp-select');
-    const pricingSelect = container.querySelector('#filter-pricing-select');
     const sortSelect = container.querySelector('#filter-sort-select');
     const clearBtn = container.querySelector('#btn-clear-filters');
 
@@ -201,7 +193,6 @@ export const scFindMentorPage = {
       if (currentFilters.category && currentFilters.category !== 'all') params.set('category', currentFilters.category);
       if (formatSelect.value !== 'all') params.set('format', formatSelect.value);
       if (expSelect.value) params.set('exp', expSelect.value);
-      if (pricingSelect.value !== 'all') params.set('pricing', pricingSelect.value);
       if (sortSelect.value !== 'relevant') params.set('sort', sortSelect.value);
 
       window.location.hash = `#/sc-find-mentor?${params.toString()}`;
@@ -216,7 +207,6 @@ export const scFindMentorPage = {
 
     if (formatSelect) formatSelect.onchange = applyFilters;
     if (expSelect) expSelect.onchange = applyFilters;
-    if (pricingSelect) pricingSelect.onchange = applyFilters;
     if (sortSelect) sortSelect.onchange = applyFilters;
 
     if (clearBtn) {
