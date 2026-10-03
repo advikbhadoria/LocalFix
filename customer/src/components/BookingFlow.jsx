@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck, MessageSquare, IndianRupee } from 'lucide-react';
+import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck, MessageSquare, IndianRupee, X, Send } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'plumber', label: 'Plumber', icon: Wrench, price: 149, color: 'text-blue-500', bg: 'bg-blue-50' },
@@ -516,61 +516,102 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                         </div>
                       </div>
                       
-                      {activeChatWorker === worker.id && (
-                        <div className="mt-5 pt-4 border-t border-slate-100 w-full animate-fade-in">
-                          <div className="bg-slate-50 p-4 rounded-xl mb-3 h-32 overflow-y-auto flex flex-col">
-                            {chatLog.length === 0 ? (
-                              <div className="text-xs text-slate-400 text-center my-auto">Start a conversation with {worker.name}</div>
-                            ) : (
-                              chatLog.map((msg, i) => (
-                                <div key={i} className="text-sm bg-blue-100 text-blue-900 p-2.5 rounded-xl rounded-br-sm self-end mb-2 max-w-[80%] shadow-sm">
-                                  {msg}
-                                </div>
-                              ))
-                            )}
-                          </div>
-                          <div className="flex gap-2">
-                            <input 
-                              type="text" 
-                              value={chatMessage} 
-                              onChange={e => setChatMessage(e.target.value)} 
-                              onKeyDown={e => { if (e.key === 'Enter' && chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }}
-                              className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" 
-                              placeholder="Type a message..." 
-                            />
-                            <button 
-                              onClick={() => { if(chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }} 
-                              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm"
-                            >
-                              Send
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
-                      {activeOfferWorker === worker.id && (
-                        <div className="mt-5 pt-4 border-t border-slate-100 w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 animate-fade-in">
-                          <div className="relative flex-1">
-                            <IndianRupee className="w-4 h-4 text-slate-400 absolute left-4 top-3" />
-                            <input 
-                              type="number" 
-                              value={offerPrice} 
-                              onChange={e => setOfferPrice(e.target.value)} 
-                              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all" 
-                              placeholder="Enter your price" 
-                            />
-                          </div>
-                          <button 
-                            onClick={() => { alert('Offer sent to ' + worker.name + '!'); setActiveOfferWorker(null); setOfferPrice(''); }} 
-                            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm whitespace-nowrap"
-                          >
-                            Submit Offer
-                          </button>
-                        </div>
-                      )}
                     </div>
                   ))}
                 </div>
+
+                {/* Chat Modal */}
+                {activeChatWorker && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in">
+                    <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden flex flex-col max-h-[80vh]">
+                      <div className="p-4 bg-blue-600 text-white flex justify-between items-center">
+                        <div className="font-bold flex items-center gap-2">
+                          <MessageSquare className="w-5 h-5" /> 
+                          Chat with {WORKERS.find(w => w.id === activeChatWorker)?.name}
+                        </div>
+                        <button onClick={() => setActiveChatWorker(null)} className="text-blue-100 hover:text-white transition-colors">
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+                      <div className="p-4 bg-slate-50 flex-1 overflow-y-auto flex flex-col gap-3 min-h-[300px]">
+                        {chatLog.length === 0 ? (
+                          <div className="text-sm text-slate-400 text-center my-auto">Say hi to start the conversation!</div>
+                        ) : (
+                          chatLog.map((msg, i) => (
+                            <div key={i} className="text-sm bg-blue-100 text-blue-900 p-3 rounded-2xl rounded-br-sm self-end max-w-[85%] shadow-sm">
+                              {msg}
+                            </div>
+                          ))
+                        )}
+                      </div>
+                      <div className="p-4 bg-white border-t border-slate-100 flex gap-2">
+                        <input 
+                          type="text" 
+                          value={chatMessage} 
+                          onChange={e => setChatMessage(e.target.value)} 
+                          onKeyDown={e => { if (e.key === 'Enter' && chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }}
+                          className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" 
+                          placeholder="Type a message..." 
+                          autoFocus
+                        />
+                        <button 
+                          onClick={() => { if(chatMessage) { setChatLog([...chatLog, chatMessage]); setChatMessage(''); } }} 
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl text-sm font-bold transition-colors shadow-sm flex items-center justify-center"
+                        >
+                          <Send className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Offer Price Modal */}
+                {activeOfferWorker && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in">
+                    <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden flex flex-col">
+                      <div className="p-4 bg-green-600 text-white flex justify-between items-center">
+                        <div className="font-bold flex items-center gap-2">
+                          <IndianRupee className="w-5 h-5" /> 
+                          Make an Offer
+                        </div>
+                        <button onClick={() => setActiveOfferWorker(null)} className="text-green-100 hover:text-white transition-colors">
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+                      <div className="p-6">
+                        <p className="text-sm text-slate-600 mb-4 text-center">
+                          Suggest a custom price for {WORKERS.find(w => w.id === activeOfferWorker)?.name}. 
+                          <br/><span className="font-semibold text-slate-800 mt-1 block">Standard Rate: ₹{calculateTotal()}</span>
+                        </p>
+                        <div className="relative mb-6">
+                          <IndianRupee className="w-6 h-6 text-slate-400 absolute left-4 top-3.5" />
+                          <input 
+                            type="number" 
+                            value={offerPrice} 
+                            onChange={e => setOfferPrice(e.target.value)} 
+                            className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-lg font-bold focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all text-center" 
+                            placeholder="Enter amount" 
+                            autoFocus
+                          />
+                        </div>
+                        <div className="flex gap-3">
+                          <button 
+                            onClick={() => setActiveOfferWorker(null)} 
+                            className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-xl text-sm font-bold transition-colors"
+                          >
+                            Cancel
+                          </button>
+                          <button 
+                            onClick={() => { alert('Offer of ₹' + offerPrice + ' sent!'); setActiveOfferWorker(null); setOfferPrice(''); }} 
+                            className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-sm font-bold transition-colors shadow-sm"
+                          >
+                            Send Offer
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </>
             )}
           </div>
