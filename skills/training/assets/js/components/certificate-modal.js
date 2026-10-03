@@ -6,7 +6,10 @@ import { modal } from './modal.js';
 import { toast } from './toast.js';
 
 export const certificateModal = {
-  open(badge, workerName = "Alex Rivera") {
+  open(badge, workerName) {
+    const storedUser = JSON.parse(localStorage.getItem('LocalFix_user') || 'null');
+    const finalWorkerName = workerName || (storedUser ? storedUser.name : "Alex Rivera");
+    
     const certHtml = `
       <div class="certificate-preview-frame">
         <div class="cert-watermark">VERIFIED</div>
@@ -23,7 +26,7 @@ export const certificateModal = {
         </p>
 
         <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#64748B;">Awarded To</div>
-        <div class="cert-recipient-name">${workerName}</div>
+        <div class="cert-recipient-name">${finalWorkerName}</div>
 
         <div style="margin-bottom:1.5rem;">
           <div style="font-size:1.15rem; font-weight:800; color:#173B75;">${badge.skillName}</div>

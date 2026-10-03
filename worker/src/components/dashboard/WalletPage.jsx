@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Wallet, ArrowDownToLine, Building2, ArrowUpRight, X } from 'lucide-react';
+import { WORKER } from '../../data/mockData';
 
 const TX_STYLES = {
   earn:     { dot: 'bg-green-500', text: 'text-green-600', prefix: '+' },
@@ -33,7 +34,7 @@ function TransactionRow({ tx }) {
 export function CashoutModal({ wallet, onCashout, onClose }) {
   const [method, setMethod]   = useState('UPI');
   const [amount, setAmount]   = useState(wallet);
-  const [upi,    setUpi]      = useState('aman@paytm');
+  const [upi,    setUpi]      = useState(`${WORKER.name.toLowerCase().split(' ')[0]}@paytm`);
   const [success, setSuccess] = useState(false);
 
   const confirm = () => {
@@ -95,7 +96,7 @@ export function CashoutModal({ wallet, onCashout, onClose }) {
               ) : (
                 <div className="bg-slate-50 rounded-xl p-3 text-sm text-slate-700">
                   <p className="font-semibold">HDFC Bank •••• 4201</p>
-                  <p className="text-slate-400 text-xs">Aman Kumar — Savings Account</p>
+                  <p className="text-slate-400 text-xs">{WORKER.name} — Savings Account</p>
                 </div>
               )}
 

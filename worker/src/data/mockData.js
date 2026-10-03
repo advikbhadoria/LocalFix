@@ -1,13 +1,15 @@
-const storedUser = JSON.parse(localStorage.getItem('localfix_user') || 'null');
+const storedUser = JSON.parse(localStorage.getItem('LocalFix_user') || 'null');
 export const WORKER = {
   name: storedUser ? storedUser.name : 'Aman Kumar',
+  phone: storedUser && storedUser.mobile ? '+91 ' + storedUser.mobile : '+91 98765 43210',
+  email: storedUser && storedUser.email ? storedUser.email : 'aman.kumar@example.com',
   service: 'AC & Appliance Technician',
   rating: 4.8,
   jobsCompleted: 127,
   acceptanceRate: 96,
   completionRate: 98,
   wallet: 4850,
-  avatar: 'AK',
+  avatar: storedUser ? storedUser.name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase() : 'AK',
 };
 
 // ─── Badges ───────────────────────────────────────────────────────────────────

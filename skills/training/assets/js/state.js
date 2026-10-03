@@ -199,8 +199,8 @@ class StateManager {
   submitMentorAssessment(assessmentData) {
     const newAssessment = {
       id: `asm_${Date.now()}`,
-      learnerId: assessmentData.learnerId || "wrk_9042",
-      learnerName: assessmentData.learnerName || "Alex Rivera",
+      learnerId: assessmentData.learnerId || this.state.currentUser.id,
+      learnerName: assessmentData.learnerName || this.state.currentUser.name,
       skill: assessmentData.skill,
       category: assessmentData.category,
       mentorId: "mnt_101",

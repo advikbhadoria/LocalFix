@@ -11,7 +11,7 @@ export default function WorkerProfile({ setDashTab }) {
         {/* Avatar + info */}
         <div className="flex items-center gap-3">
           <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center text-white text-xl font-bold shrink-0">
-            AK
+            {WORKER.avatar}
           </div>
           <div>
             <h3 className="font-bold text-slate-800 text-base">{WORKER.name}</h3>

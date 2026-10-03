@@ -3,14 +3,16 @@
  * Realistic, domain-accurate data for worker learning and peer mentorship
  */
 
+const storedUser = JSON.parse(localStorage.getItem('LocalFix_user') || 'null');
+
 export const INITIAL_MOCK_DATA = {
   // Current logged in worker profile
   currentUser: {
     id: "wrk_9042",
-    name: "Alex Rivera",
+    name: storedUser ? storedUser.name : "Alex Rivera",
     role: "Service Professional",
-    email: "alex.rivera@proservices.com",
-    phone: "+1 (555) 382-9104",
+    email: storedUser && storedUser.email ? storedUser.email : "alex.rivera@proservices.com",
+    phone: storedUser && storedUser.mobile ? '+91 ' + storedUser.mobile : "+1 (555) 382-9104",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     location: "Austin, Texas",
     rating: 4.88,

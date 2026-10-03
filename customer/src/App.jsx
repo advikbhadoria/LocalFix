@@ -10,7 +10,7 @@ function App() {
   const [history, setHistory] = useState(['book']);
   const [bookingStep, setBookingStep] = useState(1);
   
-  const storedUser = JSON.parse(localStorage.getItem('localfix_user') || 'null');
+  const storedUser = JSON.parse(localStorage.getItem('LocalFix_user') || 'null');
   const [customerProfile, setCustomerProfile] = useState({
     isRegistered: true,
     name: storedUser ? storedUser.name : 'Advik Sharma',
