@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck, MessageSquare, IndianRupee, X, Send } from 'lucide-react';
 
 const CATEGORIES = [
-  { id: 'plumber', label: 'Plumber', icon: Wrench, price: 149, color: 'text-blue-500', bg: 'bg-blue-50' },
-  { id: 'electrician', label: 'Electrician', icon: Zap, price: 129, color: 'text-amber-500', bg: 'bg-amber-50' },
-  { id: 'carpenter', label: 'Carpenter', icon: Hammer, price: 199, color: 'text-orange-500', bg: 'bg-orange-50' },
-  { id: 'cook', label: 'Cook / Tiffin', icon: Utensils, price: 249, color: 'text-green-500', bg: 'bg-green-50' },
-  { id: 'maid', label: 'House Help / Maid', icon: Sparkles, price: 199, color: 'text-teal-500', bg: 'bg-teal-50' },
-  { id: 'appliance', label: 'Appliance Repair', icon: Wrench, price: 299, color: 'text-indigo-500', bg: 'bg-indigo-50' },
-  { id: 'labour', label: 'Labour / Help', icon: Users, price: 399, color: 'text-rose-500', bg: 'bg-rose-50' },
-  { id: 'painter', label: 'Painter', icon: Paintbrush, price: 299, color: 'text-purple-500', bg: 'bg-purple-50' },
-  { id: 'salon', label: 'Salon at Home', icon: Scissors, price: 349, color: 'text-pink-500', bg: 'bg-pink-50' },
-  { id: 'others', label: 'Others', icon: Sparkles, price: 99, color: 'text-gray-500', bg: 'bg-gray-50' }
+  { id: 'plumber', label: 'Plumber', icon: Wrench, price: 149, color: 'text-sky-700', bg: 'bg-sky-50', border: 'border-sky-200', hoverBorder: 'hover:border-sky-500', hoverShadow: 'hover:shadow-sky-100', hoverGradient: 'group-hover:from-sky-400 group-hover:to-sky-600', tag: '⚡ Fastest Dispatch' },
+  { id: 'electrician', label: 'Electrician', icon: Zap, price: 129, color: 'text-amber-700', bg: 'bg-amber-50', border: 'border-amber-200', hoverBorder: 'hover:border-amber-500', hoverShadow: 'hover:shadow-amber-100', hoverGradient: 'group-hover:from-amber-400 group-hover:to-amber-600', tag: '⭐ 4.9 Rated' },
+  { id: 'carpenter', label: 'Carpenter', icon: Hammer, price: 199, color: 'text-orange-700', bg: 'bg-orange-50', border: 'border-orange-200', hoverBorder: 'hover:border-orange-500', hoverShadow: 'hover:shadow-orange-100', hoverGradient: 'group-hover:from-orange-400 group-hover:to-orange-600', tag: 'Starting ₹199' },
+  { id: 'cook', label: 'Cook / Tiffin', icon: Utensils, price: 249, color: 'text-rose-700', bg: 'bg-rose-50', border: 'border-rose-200', hoverBorder: 'hover:border-rose-500', hoverShadow: 'hover:shadow-rose-100', hoverGradient: 'group-hover:from-rose-400 group-hover:to-rose-600', tag: 'Top Rated' },
+  { id: 'maid', label: 'House Help / Maid', icon: Sparkles, price: 199, color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200', hoverBorder: 'hover:border-emerald-500', hoverShadow: 'hover:shadow-emerald-100', hoverGradient: 'group-hover:from-emerald-400 group-hover:to-emerald-600', tag: 'Verified' },
+  { id: 'appliance', label: 'Appliance Repair', icon: Wrench, price: 299, color: 'text-violet-700', bg: 'bg-violet-50', border: 'border-violet-200', hoverBorder: 'hover:border-violet-500', hoverShadow: 'hover:shadow-violet-100', hoverGradient: 'group-hover:from-violet-400 group-hover:to-violet-600', tag: '⚡ Fastest Dispatch' },
+  { id: 'labour', label: 'Labour / Help', icon: Users, price: 399, color: 'text-fuchsia-700', bg: 'bg-fuchsia-50', border: 'border-fuchsia-200', hoverBorder: 'hover:border-fuchsia-500', hoverShadow: 'hover:shadow-fuchsia-100', hoverGradient: 'group-hover:from-fuchsia-400 group-hover:to-fuchsia-600', tag: 'Available Now' },
+  { id: 'painter', label: 'Painter', icon: Paintbrush, price: 299, color: 'text-purple-700', bg: 'bg-purple-50', border: 'border-purple-200', hoverBorder: 'hover:border-purple-500', hoverShadow: 'hover:shadow-purple-100', hoverGradient: 'group-hover:from-purple-400 group-hover:to-purple-600', tag: 'Custom Jobs' },
+  { id: 'salon', label: 'Salon at Home', icon: Scissors, price: 349, color: 'text-pink-700', bg: 'bg-pink-50', border: 'border-pink-200', hoverBorder: 'hover:border-pink-500', hoverShadow: 'hover:shadow-pink-100', hoverGradient: 'group-hover:from-pink-400 group-hover:to-pink-600', tag: 'Premium' },
+  { id: 'others', label: 'Others', icon: Sparkles, price: 99, color: 'text-slate-700', bg: 'bg-slate-50', border: 'border-slate-200', hoverBorder: 'hover:border-slate-500', hoverShadow: 'hover:shadow-slate-100', hoverGradient: 'group-hover:from-slate-400 group-hover:to-slate-600', tag: 'All Needs' }
 ];
 
 const SUB_TYPES = {
@@ -194,18 +194,27 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
         {step === 1 && (
           <div className="flex flex-col gap-8">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden">
-              <div className="absolute inset-0 opacity-20 pointer-events-none">
-                <div className="absolute top-[-20%] left-[-10%] w-64 h-64 bg-white rounded-full blur-3xl"></div>
-                <div className="absolute bottom-[-20%] right-[-10%] w-64 h-64 bg-indigo-300 rounded-full blur-3xl"></div>
-              </div>
+            <div className="bg-gradient-to-tr from-blue-700 via-indigo-600 to-sky-400 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+              <div className="absolute -top-16 -right-16 w-64 h-64 bg-cyan-300/30 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-400/25 rounded-full blur-2xl pointer-events-none"></div>
               <div className="relative z-10 flex flex-col items-start gap-4">
-                <div className="animate-pulse inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold border border-white/20 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-green-400"></span> 18 Verified Pros Online in Sector 4, Pune
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold border border-white/20 shadow-sm">
+                  <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                  </div>
+                  24 Verified Technicians Online in Sector 4, Pune
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Instant Home Utility Help, <br/>Dispatched in 20 Minutes.</h1>
-                  <p className="text-blue-100 font-medium text-sm md:text-base max-w-xl">Hyperlocal verified tradespeople at fair transparent rates. No corporate markups, no waiting.</p>
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3 leading-tight">Hyperlocal Home Services in 20 Mins Flat.</h1>
+                  <p className="text-blue-100 font-medium text-sm md:text-base max-w-xl mb-4">Hyperlocal verified tradespeople at fair transparent rates. No corporate markups, no waiting.</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {['🚿 Tap Leak', '⚡ MCB Tripped', '🔨 Bed Repair', '🍳 Today\'s Cook'].map(pill => (
+                    <button key={pill} className="bg-white/10 hover:bg-white/20 hover:border-cyan-300 border border-white/20 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-md transition-all">
+                      {pill}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -220,24 +229,19 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                     <div 
                       key={cat.id} 
                       onClick={() => handleCategorySelect(cat)}
-                      className="group relative border border-slate-200/80 bg-white rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer overflow-hidden"
+                      className={`group ${cat.bg} border-2 ${cat.border} ${cat.hoverBorder} ${cat.hoverShadow} transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 rounded-2xl p-6 relative cursor-pointer overflow-hidden active:scale-95`}
                     >
-                      {idx < 2 && (
-                        <div className="absolute top-0 right-0 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-bl-lg">
-                          ⚡ 20 Min Dispatch
-                        </div>
-                      )}
+                      <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-slate-800 text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-md shadow-sm z-10 border border-slate-100">
+                        {cat.tag}
+                      </div>
+                      
                       <div className="flex justify-between items-start mb-4">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${cat.bg} ${cat.color} group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-inner`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-white group-hover:bg-gradient-to-br ${cat.hoverGradient} ${cat.color} group-hover:text-white transition-all duration-300 shadow-sm relative z-10`}>
                           <Icon className="w-6 h-6" />
                         </div>
-                        <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
                       </div>
-                      <h3 className="font-bold text-slate-900 mb-1.5 text-lg">{cat.label}</h3>
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-xs font-semibold text-slate-600 flex items-center bg-slate-100 px-1.5 py-0.5 rounded">★ 4.9 (420+)</span>
-                      </div>
-                      <div className="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-2 py-1 rounded-md border border-blue-100">
+                      <h3 className={`font-bold ${cat.color} mb-1.5 text-lg relative z-10`}>{cat.label}</h3>
+                      <div className="inline-block bg-white/60 text-slate-700 text-xs font-bold px-2 py-1 rounded-md border border-white shadow-sm relative z-10">
                         From ₹{cat.price}
                       </div>
                     </div>
@@ -246,6 +250,39 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
               </div>
             </div>
 
+            {/* Why LocalFix Bento Grid */}
+            <div className="mt-4">
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Why LocalFix?</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-all">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                    <FastForward size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-blue-900 mb-2">20-Min Hyperlocal Speed</h3>
+                    <p className="text-sm text-blue-700">Peer-to-peer neighborhood matching completely eliminates 4-hour scheduled slots.</p>
+                  </div>
+                </div>
+                <div className="bg-slate-900 border border-indigo-500/30 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg hover:shadow-indigo-500/10 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mb-4">
+                    <Lock size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-2">Customer-Controlled PIN</h3>
+                    <p className="text-sm text-indigo-200">You hold the funds until you release the 4-digit security PIN to the technician.</p>
+                  </div>
+                </div>
+                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-all">
+                  <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                    <CheckCircle2 size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-emerald-900 mb-2">0% Corporate Exploitation</h3>
+                    <p className="text-sm text-emerald-700">95% of your payment goes directly to the local technician, ensuring lower rates.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -446,16 +483,16 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
             </button>
             
             {isScanning ? (
-              <div className="py-16 flex flex-col items-center justify-center text-center">
-                <div className="relative w-24 h-24 mb-6">
-                  <div className="absolute inset-0 bg-blue-200 rounded-full animate-ping opacity-75"></div>
-                  <div className="absolute inset-2 bg-blue-400 rounded-full animate-ping opacity-50 animation-delay-150"></div>
-                  <div className="absolute inset-4 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50">
-                    <Navigation className="w-8 h-8 text-white animate-pulse" />
+              <div className="py-24 flex flex-col items-center justify-center text-center">
+                <div className="relative w-32 h-32 mb-8">
+                  <div className="absolute inset-0 border-4 border-cyan-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute inset-2 border-4 border-blue-500 rounded-full animate-ping opacity-50" style={{animationDelay: '150ms'}}></div>
+                  <div className="absolute inset-4 bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-full flex items-center justify-center shadow-lg shadow-cyan-500/50">
+                    <Navigation className="w-10 h-10 text-white animate-pulse" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Scanning 2 km radius in Pune Sector 4</h3>
-                <p className="text-sm font-medium text-slate-500 max-w-xs animate-pulse">Contacting available verified technicians for {selectedSubType.label}...</p>
+                <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Scanning 2.5 km radius around Pune Sector 4</h3>
+                <p className="text-base font-semibold text-slate-500 max-w-sm animate-pulse">Contacting verified LocalFix certified technicians for {selectedSubType.label}...</p>
               </div>
             ) : (
               <>
@@ -509,13 +546,13 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                           </button>
                           <button 
                             onClick={() => bookWorker(worker)}
-                            className="flex-1 md:flex-none bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl transition-all hover:shadow-lg hover:shadow-blue-600/30 text-sm text-center flex items-center justify-center gap-2 group-hover:scale-[1.02]"
+                            className="flex-1 md:flex-none bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2.5 px-6 rounded-xl transition-all hover:shadow-lg hover:shadow-blue-600/30 text-sm text-center flex items-center justify-center gap-2 group-hover:scale-[1.02]"
                           >
                             <Zap className="w-4 h-4 fill-current" /> Quick Book
                           </button>
                         </div>
                       </div>
-                      
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -627,24 +664,26 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
               Worker Dispatched • On the Way
             </div>
 
-            <div className="bg-gradient-to-br from-slate-900 to-blue-950 p-6 max-w-sm mx-auto mb-6 relative overflow-hidden rounded-2xl shadow-xl border border-blue-500/30">
-              <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                <Lock className="w-32 h-32 text-blue-400" />
+            <div className="bg-slate-900 border border-indigo-500/30 shadow-[0_0_40px_rgba(79,70,229,0.15)] p-8 max-w-md mx-auto mb-6 relative overflow-hidden rounded-2xl">
+              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+                <Lock className="w-48 h-48 text-indigo-400" />
               </div>
-              <div className="relative z-10">
-                <p className="text-xs font-bold text-blue-300 uppercase tracking-[0.2em] mb-4 flex items-center justify-center gap-2">
-                  <ShieldCheck className="w-4 h-4" /> Security PIN
-                </p>
-                <div className="flex justify-center gap-3 mb-6">
-                  {generatedPin?.split('').map((digit, i) => (
-                    <div key={i} className="w-12 h-14 bg-slate-800/80 backdrop-blur border border-blue-500/40 rounded-xl flex items-center justify-center text-3xl font-mono font-bold text-white shadow-inner">
-                      {digit}
-                    </div>
-                  ))}
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 border border-indigo-500/30 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+                  <Lock className="w-8 h-8 text-indigo-400" />
                 </div>
-                <div className="bg-red-500/10 text-red-200 text-[11px] p-3 rounded-lg border border-red-500/20 text-left flex gap-2.5 font-medium leading-relaxed">
-                  <AlertTriangle className="w-5 h-5 shrink-0 text-red-400 mt-0.5" />
-                  <p>Never share this PIN until the work is completely done and inspected by you.</p>
+                <p className="text-xs font-bold text-indigo-300 uppercase tracking-[0.2em] mb-4">
+                  Secure Escrow PIN
+                </p>
+                <div className="relative mb-6 group">
+                  <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full group-hover:bg-cyan-400/30 transition-all duration-500"></div>
+                  <div className="text-5xl font-mono tracking-[0.5em] text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.6)] relative z-10">
+                    {generatedPin || '4921'}
+                  </div>
+                </div>
+                <div className="bg-slate-800/80 text-slate-300 text-xs p-4 rounded-xl border border-slate-700 text-left flex gap-3 font-medium leading-relaxed backdrop-blur-md">
+                  <Shield className="w-6 h-6 shrink-0 text-emerald-400" />
+                  <p>Your payment of ₹{calculateTotal()} is locked in escrow. <span className="text-white font-bold">ONLY</span> share this PIN when the job is completed to your satisfaction.</p>
                 </div>
               </div>
             </div>
