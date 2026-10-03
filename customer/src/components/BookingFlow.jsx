@@ -10,7 +10,8 @@ const CATEGORIES = [
   { id: 'appliance', label: 'Appliance Repair', icon: Wrench, price: 299, color: 'text-indigo-500', bg: 'bg-indigo-50' },
   { id: 'labour', label: 'Labour / Help', icon: Users, price: 399, color: 'text-rose-500', bg: 'bg-rose-50' },
   { id: 'painter', label: 'Painter', icon: Paintbrush, price: 299, color: 'text-purple-500', bg: 'bg-purple-50' },
-  { id: 'salon', label: 'Salon at Home', icon: Scissors, price: 349, color: 'text-pink-500', bg: 'bg-pink-50' }
+  { id: 'salon', label: 'Salon at Home', icon: Scissors, price: 349, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { id: 'others', label: 'Others', icon: Sparkles, price: 99, color: 'text-gray-500', bg: 'bg-gray-50' }
 ];
 
 const SUB_TYPES = {
@@ -76,6 +77,10 @@ const SUB_TYPES = {
     { id: 's3', label: 'Manicure & Pedicure', price: 399, time: '~1h' },
     { id: 's4', label: 'Facial & Cleanup', price: 349, time: '~1h' },
     { id: 's5', label: 'Bridal Makeup', price: 1999, time: '~3h' }
+  ],
+  others: [
+    { id: 'o1', label: 'Custom Requirement', price: 99, time: '~TBD' },
+    { id: 'o2', label: 'General Help / Assistance', price: 199, time: '~TBD' }
   ]
 };
 
@@ -196,21 +201,6 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                   <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Instant Home Utility Help, <br/>Dispatched in 20 Minutes.</h1>
                   <p className="text-blue-100 font-medium text-sm md:text-base max-w-xl">Hyperlocal verified tradespeople at fair transparent rates. No corporate markups, no waiting.</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Quick-Search & Filter Bar */}
-            <div className="relative -mt-4">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="w-5 h-5 text-slate-400" />
-              </div>
-              <input type="text" className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm font-medium transition-shadow placeholder-slate-400" placeholder="What do you need help with? e.g. 'Leaking tap', 'AC Repair'" />
-              <div className="flex gap-2 overflow-x-auto mt-3 pb-1 hide-scrollbar">
-                {['Leaking Tap', 'Switchboard Spark', 'Ceiling Fan', 'Daily Cook', 'AC Service'].map(tag => (
-                  <button key={tag} className="whitespace-nowrap px-3 py-1.5 bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 text-xs font-semibold rounded-full border border-slate-200 hover:border-blue-200 transition-colors">
-                    {tag}
-                  </button>
-                ))}
               </div>
             </div>
 
@@ -393,6 +383,14 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
               <div className="flex justify-between font-bold text-slate-900 text-lg border-t border-slate-200 pt-2 mt-2">
                 <span>Total Payable</span>
                 <span>₹{calculateTotal()}</span>
+              </div>
+              <div className="mt-4">
+                <button 
+                  onClick={() => alert('Feature to broadcast custom offer price to all nearby workers coming soon!')}
+                  className="w-full text-slate-600 bg-slate-100 hover:bg-slate-200 text-sm font-bold py-2 rounded-lg transition-colors border border-slate-200 flex items-center justify-center gap-2"
+                >
+                  <IndianRupee className="w-4 h-4" /> Offer Custom Price
+                </button>
               </div>
             </div>
 

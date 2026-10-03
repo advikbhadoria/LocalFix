@@ -141,6 +141,8 @@ function App() {
                 completeRequest={completeRequest}
               />
             )}
+            {activeTab === 'shop' && <CustomerMarketplace />}
+            {activeTab === 'safety' && <SafetyCenter />}
           </div>
 
           {/* Right Sidebar Widgets for larger screens */}
@@ -213,15 +215,6 @@ function App() {
             </div>
           </div>
         </main>
-      ) : activeTab === 'shop' ? (
-        <main className="flex-1 overflow-y-auto px-4 py-6 relative z-10">
-          <CustomerMarketplace />
-        </main>
-      ) : activeTab === 'safety' ? (
-        <main className="flex-1 overflow-y-auto px-4 py-6 relative z-10">
-          <SafetyCenter />
-        </main>
-      ) : null}
 
         {/* Dynamic Floating Help & Satisfaction Guarantee Footer */}
         <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none flex justify-center pb-6">
