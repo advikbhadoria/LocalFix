@@ -50,10 +50,20 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-900">
+<body class="animated-bg text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-900 relative">
+
+  <!-- Ambient Animated Background -->
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <!-- Mesh Gradients -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-600/15 via-indigo-500/10 to-violet-600/15 filter blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
+    <!-- Rotating subtle glow -->
+    <div class="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] rounded-full bg-gradient-to-b from-transparent to-brand-400/10 mix-blend-multiply filter blur-[100px] animate-spin" style="animation-duration: 40s;"></div>
+    <!-- Tactical Dot grid -->
+    <div class="absolute inset-0" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 24px 24px; opacity: 0.15;"></div>
+  </div>
 
   <!-- TOP NAVBAR -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-200 shadow-sm">
+  <header class="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-white/50 transition-all duration-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <!-- Logo -->
       <a href="#/" class="flex items-center gap-2.5 group cursor-pointer text-decoration-none">
@@ -90,10 +100,10 @@
   <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- MAIN APP CONTAINER (Dynamic Views) -->
-  <main id="app" class="flex-grow flex flex-col">
+  <main id="app" class="flex-grow flex flex-col relative z-10">
     <!-- Initial Landing View fallback (Enhanced and dynamically updated by app.js) -->
     <div class="view-animate flex-grow flex flex-col justify-center">
-      <section class="relative overflow-hidden pt-12 pb-16 md:py-20 bg-gradient-to-b from-white via-brand-50/30 to-slate-50 border-b border-slate-200">
+      <section class="relative overflow-hidden pt-12 pb-16 md:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 border border-brand-200 text-brand-800 text-xs font-semibold mb-6 shadow-sm">
             <span class="flex h-2 w-2 rounded-full bg-brand-600 animate-pulse"></span>
@@ -122,7 +132,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-white border-t border-slate-200 py-8 mt-auto text-sm text-slate-500">
+  <footer class="relative z-10 bg-white/60 backdrop-blur-lg border-t border-white/50 py-8 mt-auto text-sm text-slate-500 shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <span class="font-display font-semibold text-slate-700">LocalFix</span>

@@ -97,7 +97,7 @@ function App() {
   const activeCount = requestsList.filter(r => r.status === 'active').length;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans relative overflow-hidden transition-all duration-300 ease-out">
+    <div className="min-h-screen animated-bg flex flex-col font-sans relative overflow-hidden transition-all duration-300 ease-out">
       {/* Animated Ambient Mesh Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-indigo-500/10 to-violet-600/15 animate-pulse filter blur-3xl opacity-60"></div>

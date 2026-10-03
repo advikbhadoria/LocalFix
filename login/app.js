@@ -312,7 +312,7 @@
     return `
       <div class="view-animate flex-grow flex flex-col justify-center">
         <!-- Hero Section -->
-        <section class="relative overflow-hidden pt-12 pb-16 md:py-20 bg-gradient-to-b from-white via-brand-50/30 to-slate-50 border-b border-slate-200">
+        <section class="relative overflow-hidden pt-12 pb-16 md:py-20 bg-transparent border-b border-white/30">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 border border-brand-200 text-brand-800 text-xs font-semibold mb-6 shadow-sm">
               <span class="flex h-2 w-2 rounded-full bg-brand-600 animate-pulse"></span>
@@ -393,7 +393,7 @@
 
           <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- Customer Card -->
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+            <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
               <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-600 flex items-center justify-center mb-5">
                 <i data-lucide="user" class="w-6 h-6"></i>
               </div>
@@ -410,7 +410,7 @@
             </div>
 
             <!-- Worker Card -->
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+            <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
               <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-5">
                 <i data-lucide="wrench" class="w-6 h-6"></i>
               </div>
@@ -435,7 +435,7 @@
   function renderLoginView() {
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8">
           <!-- Header -->
           <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-50 text-brand-600 mb-3 shadow-inner">
@@ -541,7 +541,7 @@
   function renderSignupView() {
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8">
           <!-- Header -->
           <div class="text-center mb-6">
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-teal-50 text-teal-600 mb-3 shadow-inner">
@@ -702,7 +702,7 @@
 
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8">
           <!-- Back button -->
           <div class="mb-4">
             <a href="#/login" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800">
@@ -788,7 +788,7 @@
 
           <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
             <!-- CUSTOMER CARD -->
-            <div class="interactive-card bg-white rounded-2xl border-2 border-slate-200 hover:border-brand-500 p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group cursor-pointer relative overflow-hidden" id="card-customer">
+            <div class="interactive-card bg-white/70 backdrop-blur-xl rounded-2xl border-2 border-slate-200 hover:border-brand-500 p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group cursor-pointer relative overflow-hidden" id="card-customer">
               <div>
                 <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-600 flex items-center justify-center mb-6 text-2xl shadow-inner">
                   👤
@@ -818,7 +818,7 @@
             </div>
 
             <!-- WORKER CARD -->
-            <div class="interactive-card bg-white rounded-2xl border-2 border-slate-200 hover:border-tealAccent-500 p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group cursor-pointer relative overflow-hidden" id="card-worker">
+            <div class="interactive-card bg-white/70 backdrop-blur-xl rounded-2xl border-2 border-slate-200 hover:border-tealAccent-500 p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group cursor-pointer relative overflow-hidden" id="card-worker">
               <div>
                 <div class="w-14 h-14 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center mb-6 text-2xl shadow-inner">
                   🛠️
@@ -861,7 +861,7 @@
 
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-3xl bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+        <div class="w-full max-w-3xl bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8">
           <!-- Step indicator -->
           <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
             <div>
@@ -1125,7 +1125,7 @@
   function renderCustomerSetupView() {
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8">
           <div class="text-center mb-6">
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-brand-600 mb-3 shadow-inner">
               <i data-lucide="map-pin" class="w-6 h-6"></i>
@@ -1267,7 +1267,7 @@
         </div>
 
         <!-- Service Request Form (Revealed when a service is picked) -->
-        <div id="service-request-section" class="mt-12 bg-white rounded-2xl border border-slate-200 shadow-md p-6 sm:p-8 hidden">
+        <div id="service-request-section" class="mt-12 bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-md p-6 sm:p-8 hidden">
           <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
             <div class="flex items-center gap-3">
               <div id="request-service-icon" class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl font-bold">
@@ -1406,7 +1406,7 @@
 
     return `
       <div class="view-animate flex-grow flex items-center justify-center px-4 py-12">
-        <div class="w-full max-w-2xl bg-white rounded-2xl border border-slate-200 shadow-xl p-8 text-center relative overflow-hidden">
+        <div class="w-full max-w-2xl bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-8 text-center relative overflow-hidden">
           <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-tealAccent-500 to-brand-600"></div>
 
           <!-- Status badge -->
@@ -1522,7 +1522,7 @@
 
     return `
       <div class="view-animate max-w-3xl mx-auto px-4 sm:px-6 py-12 w-full flex-grow">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+        <div class="bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
           <div class="h-28 bg-gradient-to-r from-brand-600 to-tealAccent-500 relative"></div>
 
           <div class="px-6 sm:px-8 pb-8 pt-0 relative">
@@ -2167,7 +2167,7 @@
 
           if (workersList) {
             workersList.innerHTML = matchedWorkers.map(w => `
-              <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+              <div class="bg-white/70 backdrop-blur-xl rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                 <div>
                   <div class="flex items-start gap-3.5 mb-4">
                     <img src="${w.image}" alt="${w.name}" class="w-14 h-14 rounded-xl object-cover border border-slate-200 shadow-sm" />

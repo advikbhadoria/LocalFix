@@ -101,3 +101,15 @@ button, a, input, select {
 .interactive-card:hover {
   transform: translateY(-3px);
 }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #14b8a6);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
