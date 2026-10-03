@@ -544,6 +544,7 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                           </button>
                         </div>
                       </div>
+                      </div>
                       
                     </div>
                   ))}

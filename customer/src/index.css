@@ -3,28 +3,60 @@
 @layer base {
   body {
     @apply text-slate-900;
-    background-color: transparent;
-    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-    background-size: 24px 24px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
   }
 }
 
-@keyframes scroll {
-  0%, 15% { transform: translateY(0); }
-  25%, 40% { transform: translateY(-24px); }
-  50%, 65% { transform: translateY(-48px); }
-  75%, 90% { transform: translateY(-72px); }
-  100% { transform: translateY(0); }
-}
-
+/* ── Core Moving Background ── */
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
 
-.animated-bg {
-  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #14b8a6);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+/* ── Floating Bubbles ── */
+@keyframes flyBubble {
+  0%   { transform: translateY(0)    scale(1)   rotate(0deg);  opacity: 0.8; }
+  100% { transform: translateY(-110vh) scale(1.4) rotate(720deg); opacity: 0; }
+}
+
+.bubble {
+  position: fixed;
+  bottom: -150px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: flyBubble linear infinite;
+  z-index: 0;
+}
+.bubble:nth-child(1)  { left: 5%;   width: 40px;  height: 40px;  animation-duration: 8s;  animation-delay: 0s;   }
+.bubble:nth-child(2)  { left: 12%;  width: 20px;  height: 20px;  animation-duration: 6s;  animation-delay: 2s;   }
+.bubble:nth-child(3)  { left: 22%;  width: 60px;  height: 60px;  animation-duration: 9s;  animation-delay: 1s;   }
+.bubble:nth-child(4)  { left: 33%;  width: 30px;  height: 30px;  animation-duration: 7s;  animation-delay: 3s;   }
+.bubble:nth-child(5)  { left: 45%;  width: 80px;  height: 80px;  animation-duration: 11s; animation-delay: 0.5s; }
+.bubble:nth-child(6)  { left: 55%;  width: 25px;  height: 25px;  animation-duration: 6s;  animation-delay: 4s;   }
+.bubble:nth-child(7)  { left: 65%;  width: 55px;  height: 55px;  animation-duration: 8s;  animation-delay: 1.5s; }
+.bubble:nth-child(8)  { left: 74%;  width: 35px;  height: 35px;  animation-duration: 10s; animation-delay: 2.5s; }
+.bubble:nth-child(9)  { left: 82%;  width: 90px;  height: 90px;  animation-duration: 12s; animation-delay: 0s;   }
+.bubble:nth-child(10) { left: 92%;  width: 15px;  height: 15px;  animation-duration: 5s;  animation-delay: 3.5s; }
+
+/* ── Text ticker ── */
+@keyframes scroll {
+  0%, 15%  { transform: translateY(0); }
+  25%, 40%  { transform: translateY(-24px); }
+  50%, 65%  { transform: translateY(-48px); }
+  75%, 90%  { transform: translateY(-72px); }
+  100%      { transform: translateY(0); }
+}
+
+/* ── Glassmorphic card ── */
+.glass-card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
 }
