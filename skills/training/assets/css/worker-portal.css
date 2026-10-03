@@ -1,0 +1,86 @@
+/* Worker Main Portal Integration Styles */
+
+/* ==========================================================================
+   WORKER GENERAL DASHBOARD
+   ========================================================================== */
+.worker-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.job-ticket-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.job-ticket-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.job-ticket-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.job-category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--primary-blue-subtle);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.job-price-tag {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--deep-navy);
+}
+
+/* Skill Requirement Badge in Job Requests */
+.skill-requirement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.skill-requirement-badge.unlocked {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+}
+.skill-requirement-badge.locked {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FCD34D;
+}
+
+/* Profile Visibility Toggle Card */
+.profile-visibility-card {
+  background: var(--primary-blue-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}

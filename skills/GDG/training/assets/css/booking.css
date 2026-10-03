@@ -1,0 +1,439 @@
+/* Training Session Booking & Scheduling Styles */
+
+/* ==========================================================================
+   BOOKING WIZARD STEPS
+   ========================================================================== */
+.booking-wizard-step {
+  display: none;
+}
+.booking-wizard-step.active {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Format Selection Cards */
+.format-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.format-option-card {
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: #FFFFFF;
+  transition: all var(--transition-fast);
+}
+
+.format-option-card:hover {
+  border-color: var(--primary-blue-light);
+  background: var(--primary-blue-subtle);
+}
+
+.format-option-card.selected {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-subtle);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.format-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: #EFF6FF;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  font-size: 1.25rem;
+}
+
+.format-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 0.25rem;
+}
+
+.format-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Calendar & Slots Layout */
+.booking-schedule-container {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+}
+
+.calendar-box {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendar-month-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+
+.calendar-nav-btn {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.cal-day-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0.35rem 0;
+}
+
+.cal-date-cell {
+  padding: 0.6rem 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.cal-date-cell:hover:not(.disabled) {
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+}
+
+.cal-date-cell.selected {
+  background: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+.cal-date-cell.disabled {
+  color: #CBD5E1;
+  background: transparent;
+  cursor: not-allowed;
+}
+
+.cal-date-cell.today {
+  border-color: var(--primary-blue);
+}
+
+/* Time Slots Grid */
+.time-slots-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.slots-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 0.75rem;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.time-slot-btn {
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.time-slot-btn:hover:not(.disabled) {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-subtle);
+}
+
+.time-slot-btn.selected {
+  background: var(--primary-blue);
+  color: #FFFFFF;
+  border-color: var(--primary-blue);
+}
+
+.time-slot-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #F1F5F9;
+}
+
+/* Booking Summary Card */
+.booking-summary-card {
+  background: var(--primary-blue-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.875rem;
+}
+.summary-row .label { color: var(--text-secondary); }
+.summary-row .val { font-weight: 700; color: var(--deep-navy); }
+
+/* ==========================================================================
+   MY TRAINING SESSIONS VIEW
+   ========================================================================== */
+.sessions-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.sessions-tab {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.sessions-tab:hover {
+  color: var(--primary-blue);
+}
+
+.sessions-tab.active {
+  color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.session-card-detailed {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+}
+
+.session-card-detailed:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.session-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.session-mentor-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.session-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-blue-light);
+}
+
+.session-badge-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.session-topic-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 0.5rem;
+}
+
+.session-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  background: var(--bg-main);
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.session-details-list .detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   SIMULATED ONLINE VIDEO CLASSROOM
+   ========================================================================== */
+.video-classroom-container {
+  background: #0F172A;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+
+.video-stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 0.75rem;
+  padding: 1rem;
+  position: relative;
+  background: #020617;
+}
+
+.video-main-stream {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-main-stream canvas, .video-main-stream img, .video-main-stream video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-stream-overlay {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: #FFFFFF;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.video-pip-stream {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pip-box {
+  flex: 1;
+  position: relative;
+  background: #1E293B;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.pip-box img, .pip-box canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-controls-bar {
+  background: #0F172A;
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #334155;
+}
+
+.media-control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #334155;
+  border: none;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.media-control-btn:hover {
+  background: #475569;
+}
+
+.media-control-btn.active-red {
+  background: var(--error);
+}
+
+.media-control-btn.end-call {
+  background: var(--error);
+  width: 100px;
+  border-radius: var(--radius-full);
+}

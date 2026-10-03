@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillConnect • Peer-to-Peer Worker Learning & Skill Development</title>
+  <meta name="description" content="Learn from experienced trades professionals, practice technical checklists, book practical 1-on-1 mentorship sessions, and unlock high-paying service jobs with verified skill credentials.">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js for Progress Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/mentors.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/learning.css">
+  <link rel="stylesheet" href="assets/css/progress.css">
+  <link rel="stylesheet" href="assets/css/assessments.css">
+  <link rel="stylesheet" href="assets/css/worker-portal.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Collapsible Worker Sidebar Navigation (12 Primary Items) -->
+    <aside class="sidebar" id="app-sidebar" aria-label="Main Navigation"></aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Sticky Topbar -->
+      <header class="topbar" id="app-topbar"></header>
+
+      <!-- SkillConnect Dedicated Sticky Sub-Navigation Bar -->
+      <nav class="sc-subnav" id="sc-subnav-bar" aria-label="SkillConnect Sub-Navigation"></nav>
+
+      <!-- Dynamic Page View Container -->
+      <main class="page-container" id="page-view-container" role="main"></main>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#/worker-dashboard" class="mobile-nav-item">
+      <i data-lucide="layout-dashboard"></i>
+      <span>Dashboard</span>
+    </a>
+    <a href="#/sc-dashboard" class="mobile-nav-item active">
+      <i data-lucide="graduation-cap"></i>
+      <span>SkillConnect</span>
+    </a>
+    <a href="#/sc-find-mentor" class="mobile-nav-item">
+      <i data-lucide="users"></i>
+      <span>Mentors</span>
+    </a>
+    <a href="#/sc-my-training" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span>Training</span>
+    </a>
+    <a href="#/worker-profile" class="mobile-nav-item">
+      <i data-lucide="user"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

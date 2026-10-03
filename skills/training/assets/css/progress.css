@@ -1,0 +1,292 @@
+/* Learner Progress Tracking, Roadmaps & Verified Credentials Styles */
+
+/* ==========================================================================
+   SKILL ROADMAP 5-STAGE STEPPER
+   ========================================================================== */
+.roadmap-container {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.roadmap-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.roadmap-stepper::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  right: 30px;
+  height: 4px;
+  background: var(--border-color);
+  z-index: 1;
+}
+
+.roadmap-step-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 140px;
+}
+
+.roadmap-node-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.roadmap-step-item.completed .roadmap-node-circle {
+  background: var(--success);
+  border-color: var(--success);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.roadmap-step-item.active .roadmap-node-circle {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2);
+}
+
+.roadmap-step-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 0.2rem;
+}
+
+.roadmap-step-desc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   CHARTS & ANALYTICS GRID
+   ========================================================================== */
+.analytics-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.chart-canvas-container {
+  position: relative;
+  height: 260px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   VERIFIED SKILLS BADGES GRID
+   ========================================================================== */
+.verified-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-credential-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-credential-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue), #10B981);
+}
+
+.skill-credential-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-blue);
+}
+
+.credential-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.credential-badge-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  border: 1px solid var(--primary-blue-light);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.credential-title-info h4 {
+  font-size: 1.05rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.2rem;
+}
+
+.credential-meta-list {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  background: var(--bg-main);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   OFFICIAL DEMO CERTIFICATE MODAL
+   ========================================================================== */
+.certificate-preview-frame {
+  background: #FFFFFF;
+  border: 8px double #1E3A8A;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(37, 99, 235, 0.05);
+}
+
+.cert-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  color: rgba(37, 99, 235, 0.03);
+  font-weight: 900;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cert-header-seal {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep-navy), var(--primary-blue));
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 14px rgba(23, 59, 117, 0.3);
+}
+
+.cert-title-org {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.cert-main-heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+
+.cert-recipient-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  border-bottom: 2px solid var(--border-color);
+  display: inline-block;
+  padding: 0 2rem 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.cert-signatures-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cert-sig-block {
+  text-align: center;
+}
+
+.sig-line {
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 1.25rem;
+  color: var(--deep-navy);
+}
+
+.sig-title {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}

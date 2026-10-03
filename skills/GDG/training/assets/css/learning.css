@@ -1,0 +1,470 @@
+/* Learning Library, Video Player, Practical Checklist & Quiz Styles */
+
+/* ==========================================================================
+   COURSE LIBRARY & GRID
+   ========================================================================== */
+.courses-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.courses-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.course-full-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.course-full-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+.course-media-wrap {
+  position: relative;
+  height: 170px;
+  background: var(--deep-navy);
+}
+
+.course-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+.course-full-card:hover .course-media-img {
+  transform: scale(1.05);
+}
+
+.play-overlay-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.9);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast);
+}
+.course-full-card:hover .play-overlay-icon {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.course-content-body {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.course-card-tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.625rem;
+}
+
+.course-difficulty-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+.course-difficulty-badge.beginner { background: #DCFCE7; color: #15803D; }
+.course-difficulty-badge.intermediate { background: #FEF3C7; color: #B45309; }
+.course-difficulty-badge.advanced { background: #FEE2E2; color: #B91C1C; }
+
+/* ==========================================================================
+   INTERACTIVE COURSE PLAYER
+   ========================================================================== */
+.player-page-layout {
+  display: grid;
+  grid-template-columns: 2.3fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.player-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.video-screen-container {
+  background: #020617;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.video-viewport {
+  width: 100%;
+  height: 440px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1E293B 0%, #0F172A 100%);
+}
+
+.video-viewport canvas, .video-viewport video, .video-viewport img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-center-play-trigger {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.9);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+.video-center-play-trigger:hover {
+  transform: scale(1.1);
+  background: var(--primary-blue);
+}
+
+.custom-player-controls {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scrubber-track {
+  width: 100%;
+  height: 5px;
+  background: #334155;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+}
+
+.scrubber-progress {
+  height: 100%;
+  width: 35%;
+  background: var(--primary-blue);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+.scrubber-progress::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.controls-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+}
+
+.ctrl-group-left, .ctrl-group-right {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.ctrl-btn {
+  background: transparent;
+  border: none;
+  color: #CBD5E1;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+.ctrl-btn:hover {
+  color: #FFFFFF;
+}
+
+.time-readout {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   PLAYLIST SIDEBAR
+   ========================================================================== */
+.playlist-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 560px;
+}
+
+.playlist-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playlist-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+
+.playlist-lessons-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.playlist-item {
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.playlist-item:hover {
+  background: var(--primary-blue-subtle);
+}
+
+.playlist-item.active {
+  background: #EFF6FF;
+  border-left: 3px solid var(--primary-blue);
+}
+
+.lesson-check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+.lesson-check-icon.completed { background: var(--success); color: #FFFFFF; }
+.lesson-check-icon.pending { border: 2px solid #CBD5E1; color: transparent; }
+
+.lesson-meta-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.lesson-meta-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lesson-meta-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   PRACTICAL SKILL CHECKLISTS
+   ========================================================================== */
+.checklist-container {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.checklist-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.checklist-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.checklist-task-card {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.checklist-task-card:hover {
+  background: #FFFFFF;
+  border-color: var(--primary-blue-light);
+}
+
+.task-checkbox-wrap {
+  margin-top: 2px;
+}
+
+.task-content-details {
+  flex: 1;
+}
+
+.task-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.task-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+
+.task-safety-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.task-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.task-tools-required {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   INTERACTIVE KNOWLEDGE QUIZ
+   ========================================================================== */
+.quiz-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.quiz-question-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 1.25rem;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-option-label {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-main);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.quiz-option-label:hover {
+  background: var(--primary-blue-subtle);
+  border-color: var(--primary-blue);
+}
+
+.quiz-option-label.correct {
+  background: #DCFCE7 !important;
+  border-color: #16A34A !important;
+  color: #15803D !important;
+}
+
+.quiz-option-label.incorrect {
+  background: #FEE2E2 !important;
+  border-color: #DC2626 !important;
+  color: #B91C1C !important;
+}
+
+.quiz-explanation-box {
+  background: var(--primary-blue-subtle);
+  border-left: 4px solid var(--primary-blue);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--deep-navy);
+}

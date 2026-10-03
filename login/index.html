@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalFix - Connect with Work. Get Things Done.</title>
+  <meta name="description" content="LocalFix is a two-sided marketplace connecting verified service workers with customers. Fast, safe, and reliable." />
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb', // Requested Primary Blue
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            tealAccent: {
+              500: '#0d9488',
+              600: '#0f766e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-900">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#/" class="flex items-center gap-2.5 group cursor-pointer text-decoration-none">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-tealAccent-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/>
+            <path d="M17.64 15 22 10.64"/>
+            <path d="m20.91 3.26-6.5 6.5"/>
+            <path d="m2 2 20 20"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-bold text-xl tracking-tight text-slate-900 flex items-center gap-1">
+            Local<span class="text-brand-600">Fix</span>
+          </span>
+          <span class="block text-[10px] tracking-wider uppercase font-semibold text-slate-400 -mt-1">Worker &amp; Customer Bridge</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links & Status -->
+      <nav id="nav-actions" class="flex items-center gap-3">
+        <a href="#/login" class="text-sm font-semibold text-slate-600 hover:text-brand-600 px-3.5 py-2 rounded-lg hover:bg-slate-100 transition-all">
+          Sign In
+        </a>
+        <a href="#/signup" class="text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+          <span>Create Account</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- MAIN APP CONTAINER (Dynamic Views) -->
+  <main id="app" class="flex-grow flex flex-col">
+    <!-- Initial Landing View fallback (Enhanced and dynamically updated by app.js) -->
+    <div class="view-animate flex-grow flex flex-col justify-center">
+      <section class="relative overflow-hidden pt-12 pb-16 md:py-20 bg-gradient-to-b from-white via-brand-50/30 to-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 border border-brand-200 text-brand-800 text-xs font-semibold mb-6 shadow-sm">
+            <span class="flex h-2 w-2 rounded-full bg-brand-600 animate-pulse"></span>
+            India's Trusted Two-Sided Marketplace
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold text-slate-900 tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none">
+            Welcome to <span class="bg-gradient-to-r from-brand-600 to-tealAccent-500 bg-clip-text text-transparent">LocalFix</span>
+          </h1>
+
+          <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
+            Connect with work. Get things done. Get paid safely.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+            <a href="#/login" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-base shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2 cursor-pointer">
+              <span>Login</span>
+            </a>
+            <a href="#/signup" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold text-base shadow-sm hover:shadow hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2 cursor-pointer">
+              <span>Create Account</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-8 mt-auto text-sm text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-semibold text-slate-700">LocalFix</span>
+        <span>•</span>
+        <span>Authentication &amp; Role Management System</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-slate-400">
+        <span>Verified Identity Engine</span>
+        <span>•</span>
+        <span>Two-Sided Marketplace Bridge</span>
+        <span>•</span>
+        <button onclick="if(window.app) window.app.resetDemo()" class="hover:text-brand-600 transition-colors underline cursor-pointer">
+          Reset Demo State
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App State and Routing Scripts -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

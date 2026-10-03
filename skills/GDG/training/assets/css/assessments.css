@@ -1,0 +1,157 @@
+/* Skill Assessments & Mentor Evaluation Styles */
+
+/* ==========================================================================
+   ASSESSMENT FORM & RUBRIC
+   ========================================================================== */
+.assessment-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 2fr;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.learner-summary-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.learner-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.learner-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-blue-light);
+}
+
+.learner-stats-list {
+  background: var(--bg-main);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+}
+
+.assessment-form-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.rubric-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.rubric-item {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rubric-info {
+  max-width: 60%;
+}
+
+.rubric-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 0.2rem;
+}
+
+.rubric-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.rubric-score-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.score-star-btn {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.score-star-btn:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.score-star-btn.selected {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #FFFFFF;
+}
+
+/* Assessment Status Selector */
+.verdict-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.verdict-option {
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: #FFFFFF;
+  transition: all var(--transition-fast);
+}
+
+.verdict-option:hover {
+  border-color: var(--primary-blue-light);
+}
+
+.verdict-option.selected.pass {
+  border-color: var(--success);
+  background: var(--success-light);
+}
+
+.verdict-option.selected.practice {
+  border-color: var(--warning);
+  background: var(--warning-light);
+}
+
+.verdict-option.selected.reassess {
+  border-color: var(--error);
+  background: var(--error-light);
+}
