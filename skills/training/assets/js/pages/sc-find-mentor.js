@@ -267,7 +267,6 @@ export const scFindMentorPage = {
       date: 'Tomorrow',
       time: mentor.availability.slots[0] || '10:00 AM',
       duration: '60 mins',
-      fee: mentor.isFree || mentor.hourlyRate === 0 ? 'Free' : `$${mentor.hourlyRate}.00`,
       notes: ''
     };
 
@@ -389,8 +388,10 @@ export const scFindMentorPage = {
             <div class="summary-row"><span class="label">Scheduled Time:</span><span class="val" id="summary-datetime">${bookingData.date} at ${bookingData.time}</span></div>
             <div class="summary-row"><span class="label">Duration:</span><span class="val">60 Minutes</span></div>
             <div class="summary-row" style="border-top:1px solid #DBEAFE; padding-top:0.5rem; margin-top:0.5rem;">
-              <span class="label" style="font-weight:700;">Total Fee:</span>
-              <span class="val" style="color:#2563EB; font-size:1.1rem;">${bookingData.fee}</span>
+              <span class="label" style="font-weight:700;">Agreement:</span>
+              <span class="val" style="color:#2563EB; font-size:0.9rem; font-weight:600; line-height:1.4;">
+                I agree to complete 10 jobs related to this skill within one month of completing this session.
+              </span>
             </div>
           </div>
         </div>

@@ -72,8 +72,8 @@ export const scMentorProfilePage = {
           <!-- Quick Stats Grid -->
           <div class="profile-detail-grid">
             <div class="profile-stat-box">
-              <div class="num">${mentor.isFree || mentor.hourlyRate === 0 ? 'Free' : `$${mentor.hourlyRate}/hr`}</div>
-              <div class="lbl">Mentoring Rate</div>
+              <div class="num" style="font-size: 1.1rem; line-height:1.2;">10 Jobs</div>
+              <div class="lbl">Within 1 month</div>
             </div>
             <div class="profile-stat-box">
               <div class="num">${mentor.trainingFormats.length} Formats</div>
