@@ -53,7 +53,7 @@ export const scLearningLibraryPage = {
         <!-- Course Cards Grid -->
         <div class="courses-grid-cards">
           ${courses.map(course => `
-            <div class="course-full-card" onclick="window.location.hash='#/sc-course-player?id=${course.id}'">
+            <div class="course-full-card" onclick="if(confirm('AGREEMENT: You must complete 10 jobs related to this skill within one month of completion of the course from our site. Do you accept?')) { window.location.hash='#/sc-course-player?id=${course.id}'; }">
               <div class="course-media-wrap">
                 <img src="${course.thumbnail}" alt="${course.title}" class="course-media-img">
                 <div class="play-overlay-icon">

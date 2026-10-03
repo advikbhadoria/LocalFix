@@ -23,13 +23,13 @@ export const BADGES = [
 // ─── Available Jobs ────────────────────────────────────────────────────────────
 export const INITIAL_JOBS = [
   { id: 'j1', type: 'AC Repair',              icon: '❄️',  dist: 2.4, pay: 650, time: 45,
-    customer: { name: 'Rahul S.',  rating: 4.7, prevJobs: 6  }, area: 'Koramangala',  urgent: true  },
+    customer: { name: 'Rahul S.',  rating: 4.7, prevJobs: 6  }, area: 'Koramangala',  urgent: true, image: 'https://placehold.co/600x400/e2e8f0/475569?text=AC+Leaking+Water' },
   { id: 'j2', type: 'Washing Machine Repair', icon: '🌊',  dist: 3.1, pay: 800, time: 60,
-    customer: { name: 'Priya M.', rating: 4.9, prevJobs: 12 }, area: 'HSR Layout',    urgent: false },
+    customer: { name: 'Priya M.', rating: 4.9, prevJobs: 12 }, area: 'HSR Layout',    urgent: false, image: 'https://placehold.co/600x400/e2e8f0/475569?text=Drum+Not+Spinning' },
   { id: 'j3', type: 'Plumbing Repair',        icon: '🔧',  dist: 1.8, pay: 450, time: 30,
-    customer: { name: 'Deepak R.',rating: 4.5, prevJobs: 3  }, area: 'Indiranagar',   urgent: false },
+    customer: { name: 'Deepak R.',rating: 4.5, prevJobs: 3  }, area: 'Indiranagar',   urgent: false, image: 'https://placehold.co/600x400/e2e8f0/475569?text=Leaky+Pipe' },
   { id: 'j4', type: 'Electrical Repair',      icon: '⚡',  dist: 2.7, pay: 550, time: 40,
-    customer: { name: 'Sneha T.', rating: 4.8, prevJobs: 9  }, area: 'Whitefield',    urgent: false },
+    customer: { name: 'Sneha T.', rating: 4.8, prevJobs: 9  }, area: 'Whitefield',    urgent: false, image: 'https://placehold.co/600x400/e2e8f0/475569?text=Short+Circuit' },
 ];
 
 // ─── Missed Jobs ───────────────────────────────────────────────────────────────

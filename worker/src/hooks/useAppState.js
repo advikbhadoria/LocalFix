@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import {
   WORKER, INITIAL_JOBS, INITIAL_MISSED, INITIAL_TRANSACTIONS,
   INITIAL_NOTIFICATIONS, INITIAL_CHAT, EARNINGS_TODAY
@@ -11,7 +11,14 @@ export function useAppState() {
 
   // ── Worker ──────────────────────────────────────────────────────────────────
   const [isOnline, setIsOnline]   = useState(true);
-  const [wallet, setWallet]       = useState(WORKER.wallet);
+  const [wallet, setWallet]       = useState(() => {
+    const saved = localStorage.getItem('LocalFix_workerWallet');
+    return saved !== null ? Number(saved) : WORKER.wallet;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('LocalFix_workerWallet', wallet);
+  }, [wallet]);
 
   // ── Jobs ────────────────────────────────────────────────────────────────────
   const [availableJobs, setAvailableJobs] = useState(INITIAL_JOBS);

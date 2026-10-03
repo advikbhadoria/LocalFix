@@ -14,7 +14,8 @@ import Analytics           from './Analytics';
 import ChatInterface       from './ChatInterface';
 import { JobCompletionModal } from './JobCompletionModal';
 import DemoMode            from './DemoMode';
-import { ShieldCheck, BarChart2, Play, ChevronRight, Home, Briefcase, Map, Wallet, User, Bell, BookOpen, Users } from 'lucide-react';
+import MarketplaceSection  from './MarketplaceSection';
+import { ShieldCheck, BarChart2, Play, ChevronRight, Home, Briefcase, Map, Wallet, User, Bell, BookOpen, Users, ShoppingBag } from 'lucide-react';
 import { WORKER } from '../../data/mockData';
 
 // Desktop sidebar navigation
@@ -23,6 +24,7 @@ const SIDENAV = [
   { id: 'jobs',          icon: Briefcase,label: 'Jobs'          },
   { id: 'map',           icon: Map,      label: 'Map'           },
   { id: 'wallet',        icon: Wallet,   label: 'Wallet'        },
+  { id: 'marketplace',   icon: ShoppingBag,label: 'Shop'        },
   { id: 'analytics',     icon: BarChart2,label: 'Analytics'     },
   { id: 'notifications', icon: Bell,     label: 'Notifications' },
   { id: 'profile',       icon: User,     label: 'Profile'       },
@@ -47,6 +49,7 @@ export default function Dashboard({
   const [dashTab, setDashTab] = useState('home');
   const [showSafety, setShowSafety] = useState(false);
   const [showDemo,   setShowDemo]   = useState(false);
+  const [workerProducts, setWorkerProducts] = useState([]);
 
   // Demo mode handler
   const handleDemoAction = (action) => {
@@ -171,6 +174,14 @@ export default function Dashboard({
           <div className="pb-4">
             <JobMap jobs={availableJobs} onAccept={acceptJob} />
           </div>
+        );
+
+      case 'marketplace':
+        return (
+          <MarketplaceSection 
+            products={workerProducts} 
+            onAddProduct={(p) => setWorkerProducts([p, ...workerProducts])} 
+          />
         );
 
       case 'wallet':

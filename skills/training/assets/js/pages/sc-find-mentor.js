@@ -88,7 +88,7 @@ export const scFindMentorPage = {
             <!-- Pricing Filter -->
             <select class="filter-select" id="filter-pricing-select">
               <option value="all" ${filters.pricing === 'all' ? 'selected' : ''}>Fee: Any</option>
-              <option value="free" ${filters.pricing === 'free' ? 'selected' : ''}>Free Mentorship</option>
+              <option value="all">All Mentors</option>
               <option value="paid" ${filters.pricing === 'paid' ? 'selected' : ''}>Paid Sessions</option>
             </select>
 
@@ -168,7 +168,7 @@ export const scFindMentorPage = {
 
         <div class="mentor-card-footer">
           <div class="mentor-pricing-info">
-            <div class="mentor-fee">${m.isFree || m.hourlyRate === 0 ? 'Free' : `$${m.hourlyRate}/hr`}</div>
+
             <div class="mentor-fee-sub">${m.trainingFormats.join(', ')}</div>
           </div>
 

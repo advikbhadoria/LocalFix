@@ -9,6 +9,8 @@ export default function TopNav({ activeTab, setActiveTab, customerProfile, activ
   const navItems = [
     { id: 'book', label: 'Book a Service' },
     { id: 'requests', label: `My Requests ${activeRequestsCount > 0 ? `(${activeRequestsCount} Active)` : ''}` },
+    { id: 'shop', label: 'Shop' },
+    { id: 'safety', label: 'Safety & SOS' },
     { id: 'profile', label: 'Profile' }
   ];
 

@@ -144,7 +144,7 @@ export const scDashboardPage = {
 
             <div class="courses-grid-horizontal">
               ${inProgressCourses.slice(0, 2).map(course => `
-                <div class="course-card-compact" onclick="window.location.hash='#/sc-course-player?id=${course.id}'">
+                <div class="course-card-compact" onclick="if(confirm('AGREEMENT: You must complete 10 jobs related to this skill within one month of completion of the course from our site. Do you accept?')) { window.location.hash='#/sc-course-player?id=${course.id}'; }">
                   <div class="course-thumb-container">
                     <img src="${course.thumbnail}" alt="${course.title}" class="course-thumb-img">
                     <span class="course-category-badge">${course.category}</span>

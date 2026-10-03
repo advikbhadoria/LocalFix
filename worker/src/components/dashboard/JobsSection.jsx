@@ -36,6 +36,11 @@ function JobCard({ job, onAccept, onReject, onOpen }) {
           </div>
         </div>
       </div>
+      {job.image && (
+        <div className="mt-3">
+          <img src={job.image} alt="Issue thumbnail" className="w-full h-20 object-cover rounded-lg border border-slate-200" />
+        </div>
+      )}
       <div className="flex gap-2 mt-3">
         <button
           onClick={e => { e.stopPropagation(); onAccept(job); }}
@@ -98,6 +103,13 @@ export function JobPopup({ job, onAccept, onReject, onExpire }) {
               </div>
             </div>
           </div>
+
+          {job.image && (
+            <div className="mb-4">
+              <p className="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-widest">Customer Uploaded Image</p>
+              <img src={job.image} alt="Issue" className="w-full h-32 object-cover rounded-xl border border-slate-200 shadow-sm" />
+            </div>
+          )}
 
           {/* Customer info */}
           <div className="bg-blue-50 rounded-xl p-3 mb-4">

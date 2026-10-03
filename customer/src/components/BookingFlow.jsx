@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck } from 'lucide-react';
+import { Wrench, Zap, Hammer, Utensils, Sparkles, ShieldCheck, ArrowLeft, ChevronRight, Phone, CheckCircle2, Star, Clock, MapPin, Search, Shield, Lock, RefreshCw, AlertTriangle, FastForward, Navigation, Camera, Users, Paintbrush, Scissors, Truck, MessageSquare, IndianRupee } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'plumber', label: 'Plumber', icon: Wrench, price: 149, color: 'text-blue-500', bg: 'bg-blue-50' },
@@ -474,9 +474,15 @@ export default function BookingFlow({ customerProfile, addRequest, setActiveTab,
                         <div className="text-sm font-bold text-slate-800 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 inline-block text-center w-full md:w-auto">
                           Standard Rate: ₹{calculateTotal()} Base
                         </div>
-                        <div className="flex gap-2 w-full md:w-auto">
-                          <button className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-slate-900 text-sm font-bold py-2.5 px-4 rounded-xl transition-colors text-center shadow-sm">
-                            View Reviews
+                        <div className="flex flex-wrap gap-2 w-full md:w-auto justify-end">
+                          <button onClick={() => alert('Opening chat with ' + worker.name)} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
+                            <MessageSquare className="w-4 h-4" /> Chat
+                          </button>
+                          <button onClick={() => {
+                            const newPrice = prompt('Enter your offer price (₹) for this worker:', calculateTotal());
+                            if(newPrice && !isNaN(newPrice)) { alert('Offer of ₹' + newPrice + ' sent to ' + worker.name); }
+                          }} className="flex-1 md:flex-none text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 hover:text-green-600 text-sm font-bold py-2.5 px-3 rounded-xl transition-colors text-center shadow-sm flex items-center justify-center gap-1">
+                            <IndianRupee className="w-4 h-4" /> Offer Price
                           </button>
                           <button 
                             onClick={() => bookWorker(worker)}
