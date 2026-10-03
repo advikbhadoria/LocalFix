@@ -13,9 +13,9 @@ import NotificationCenter  from './NotificationCenter';
 import Analytics           from './Analytics';
 import ChatInterface       from './ChatInterface';
 import { JobCompletionModal } from './JobCompletionModal';
-import DemoMode            from './DemoMode';
+
 import MarketplaceSection  from './MarketplaceSection';
-import { ShieldCheck, BarChart2, Play, ChevronRight, Home, Briefcase, Map, Wallet, User, Bell, BookOpen, Users, ShoppingBag } from 'lucide-react';
+import { ShieldCheck, BarChart2, ChevronRight, Home, Briefcase, Map, Wallet, User, Bell, BookOpen, Users, ShoppingBag } from 'lucide-react';
 import { WORKER } from '../../data/mockData';
 
 // Desktop sidebar navigation
@@ -49,10 +49,9 @@ export default function Dashboard({
 }) {
   const [dashTab, setDashTab] = useState('home');
   const [showSafety, setShowSafety] = useState(false);
-  const [showDemo,   setShowDemo]   = useState(false);
+
   const [workerProducts, setWorkerProducts] = useState([]);
 
-  // Demo mode handler
   const handleDemoAction = (action) => {
     switch (action) {
       case 'show_popup':
@@ -90,12 +89,7 @@ export default function Dashboard({
                 <p className="text-blue-200 text-sm">Good {getGreeting()},</p>
                 <p className="text-white font-black text-lg">{WORKER.name} 👋</p>
               </div>
-              <button
-                onClick={() => setShowDemo(true)}
-                className="flex items-center gap-2 bg-white/20 hover:bg-white/30 border border-white/30 text-white text-xs font-semibold px-3 py-2 rounded-xl transition-colors"
-              >
-                <Play size={12} /> Demo Tour
-              </button>
+
             </div>
 
             {/* Active job */}
@@ -354,25 +348,7 @@ export default function Dashboard({
             })}
           </nav>
 
-          {/* Demo button */}
-          <div className="mt-auto">
-            {dashTab !== 'skillconnect' ? (
-              <button
-                onClick={() => setShowDemo(true)}
-                className="w-full flex items-center justify-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-semibold text-sm px-3 py-2.5 rounded-xl hover:bg-blue-100 transition-colors"
-              >
-                <Play size={14} /> Demo Mode
-              </button>
-            ) : (
-              <button
-                onClick={() => setShowDemo(true)}
-                title="Demo Mode"
-                className="w-10 h-10 flex items-center justify-center bg-blue-50 border border-blue-200 text-blue-700 rounded-xl hover:bg-blue-100 transition-colors mx-auto"
-              >
-                <Play size={14} />
-              </button>
-            )}
-          </div>
+
         </aside>
 
         {/* Main content */}
@@ -418,8 +394,7 @@ export default function Dashboard({
       {/* Safety center overlay */}
       {showSafety && <SafetyCenter onClose={() => setShowSafety(false)} />}
 
-      {/* Demo mode */}
-      {showDemo && <DemoMode onAction={handleDemoAction} onClose={() => setShowDemo(false)} />}
+
     </div>
   );
 }
